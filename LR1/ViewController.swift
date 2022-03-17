@@ -88,6 +88,7 @@ class ViewController: NSViewController {
                 
                     if wBuf.count > 0 {
                         
+                        // search equals charecters, it count & position in text where neet put ref
                         if wBuf[wChr] == dictionary[dChr] && wChr < wBuf.count-1{
                             offset = index - wBuf.count
                             matchlength += 1
@@ -95,25 +96,30 @@ class ViewController: NSViewController {
                             dChr += 1
                         }
                         
+                        // non equals char or wBuf fully checked
                         if wBuf[wChr] != dictionary[dChr] || wChr == wBuf.count-1{
                             
+                            //add equals characher to dictionary
                             for i in 0...wChr{
                                 dictionary.append(wBuf[i])
                             }
                             index += 1
                             
+                            // position in text where need put ref
                             if index <= text.count-1{
                                 wBuf.append(text[index])
                             }
-                                
+                            // remowe all from wBuf when all wBuf added to dictionary
                             if wChr == wBuf.count-1{
                                 wBuf.removeAll()
-                            } else {
+                            } else { //remowe first el from buf when it added to dict !!!!!!!!!! need insert loop with deleting char from boof when chars count > 1
                                 wBuf.remove(at: 0)
                                 wChr = 0
                             }
                         }
                     }
+                    
+                    // if wBuf is full break
                     if wBuf.count == 0{
                         print("dictionary")
                         
