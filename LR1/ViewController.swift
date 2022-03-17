@@ -134,22 +134,29 @@ class ViewController: NSViewController {
                     }
                     
                 }
+                
+                if offset != 0 && matchlength > 0{
+                    text[offset] = Character("\(wChr-1)")
+                    text[offset+1] = Character("\(matchlength)")
+                    for t in (offset+2)...(offset + matchlength){
+                        text[t] = " "
+                    }
+                }
                     
             }
-                    
-//                    text[index-(matchlength+1)] = Character(UnicodeScalar(dind)!)
-//                    text[index-matchlength] = Character(UnicodeScalar(matchlength)!)
-                    
-                
-                
             
-                var string = ""
-                for chr in text{
-                    string.append(chr)
-                }
-                textLabel.stringValue = string
-
+            print("text loop")
         }
+        
+        //                    text[index-(matchlength+1)] = //                    text[index-(matchlength+1)] = Character(UnicodeScalar(dind)!)
+        //                    text[index-matchlength] = Character(UnicodeScalar(matchlength)!)
+        //                    text[index-matchlength] = Character(UnicodeScalar(matchlength)!)
+        
+        var string = ""
+        for chr in text{
+            string.append(chr)
+        }
+        textLabel.stringValue = string
         
     }
     
