@@ -57,31 +57,44 @@ class ViewController: NSViewController {
         var w = 20 // Nall - nCoded
         
         var maxWBufCount = 6
-        
+        var maxDictCount = 12
         
         
         var dictionary: [Character] = [" "]
         
         var wBuf: [Character] = [" "]
         
-        dictionary.removeAll()
+//        dictionary.removeAll()
         wBuf.removeAll()
+        dictionary[0] = text[0]
         
         // fill Wbufer
-        for i in 0...maxWBufCount {
-            wBuf.append(text[i+1])
+        for i in 1...maxWBufCount {
+            wBuf.append(text[i])
         }
         
-        dictionary.append(text[0])
+//        dictionary.append(text[0])
         
-        for var index in (maxWBufCount+1)...text.count-1{
-            var offset = 0
-            var matchlength = 0
+//        var dloop = 0
+//        var wloop = 0
+//        var tloop = 0
+//
+//
+        var offset = 0
+        var matchlength = 0
+        
+        //MARK: - 1 TRY
+        
+        /*for var index in (maxWBufCount+1)...text.count-1{
+
             var wChr = 0
             var dChr = 0
+            offset = 0
+            matchlength = 0
+            
             
             // equals char from dictionary and chars from wBuf
-            while wChr < wBuf.count-1{
+            while wChr <= wBuf.count-1{
                 
                 //search in dictionary
                 while dChr <= dictionary.count-1{
@@ -113,16 +126,22 @@ class ViewController: NSViewController {
                             if wChr == wBuf.count-1{
                                 wBuf.removeAll()
                             } else { //remowe first el from buf when it added to dict !!!!!!!!!! need insert loop with deleting char from boof when chars count > 1
-                                wBuf.remove(at: 0)
-                                wChr = 0
+//                                wBuf.remove(at: 0)
+//                                wChr = 0
+                                for i in 0...wBuf.count-1-matchlength{ //???????????
+                                    wBuf.remove(at: 0)
+                                }
                             }
                         }
                     }
-                    
-                    // if wBuf is full break
+        
+        
+        
+
+
                     if wBuf.count == 0{
                         print("dictionary")
-                        
+
                         for i in dictionary{
                             print(i)
                         }
@@ -132,21 +151,114 @@ class ViewController: NSViewController {
                         }
                         break
                     }
-                    
-                }
-                
-                if offset != 0 && matchlength > 0{
-                    text[offset] = Character("\(wChr-1)")
-                    text[offset+1] = Character("\(matchlength)")
-                    for t in (offset+2)...(offset + matchlength){
-                        text[t] = " "
+                    if dictionary.count >= maxDictCount{
+                        dictionary.remove(at: 0)
                     }
+                    dloop += 1
                 }
-                    
+    
+                    wloop += 1
             }
             
-            print("text loop")
-        }
+            tloop += 1
+            print("offset ", offset, " matchlength ", matchlength)
+            
+        
+       
+            
+            if offset != 0 && matchlength > 0{
+    //                    text[offset] = Character("\(wChr-1)")
+    //                    text[offset+1] = Character("\(matchlength)")
+                print(offset)
+                print(matchlength)
+                for t in offset...(offset + matchlength){
+                    text[t] = " "
+                }
+            }
+        } */
+        
+//        print(text)
+//        print(dictionary)
+//        print(wBuf)
+        
+        //MARK: - 2 TRY
+        
+        
+        var index = maxWBufCount + 1
+        
+        while index < text.count{
+            
+            var bufIndex = 0
+            var dictIndex = 0
+         //   wBuf.append(text[index])
+            
+            while bufIndex <= wBuf.count-1{
+                
+                print("wBuf ",wBuf)
+                print("dict ",dictionary)
+                             
+                if wBuf[bufIndex] == dictionary[dictIndex]{
+                    offset = index - (wBuf.count-1)
+                    matchlength += 1
+                    if bufIndex < wBuf.count-1{
+                        bufIndex += 1
+                    }
+                    if dictIndex < dictionary.count-1{
+                        dictIndex += 1
+                    }
+
+                }
+                
+                if wBuf[bufIndex] != dictionary[dictIndex] && matchlength == 0{
+                    dictionary.append(wBuf[bufIndex])
+                    wBuf.remove(at: wBuf.startIndex)
+                    break
+                }
+
+                if wBuf[bufIndex] != dictionary[dictIndex] && matchlength > 0 || bufIndex >= maxWBufCount{
+                    text[offset] = "o"
+                    //text[index+1] = "l"
+
+                    for i in offset...(offset+matchlength){
+                        //text[i] = " "
+                    }
+                    for _ in 0...bufIndex{
+                        dictionary.append(wBuf[0])
+                        wBuf.remove(at: wBuf.startIndex)
+                    }
+//                    for _ in 0...bufIndex-1{
+//                        if (index+bufIndex) < text.endIndex{
+//                            wBuf.append(text[index+bufIndex])
+//                        }
+//                    }
+
+                    index += bufIndex-1
+                    break
+                }
+                
+               
+            }
+//
+//            index += 1
+//        }
+//
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        print(text)
+//        print(dictionary)
+//        print(wBuf)
         
         //                    text[index-(matchlength+1)] = //                    text[index-(matchlength+1)] = Character(UnicodeScalar(dind)!)
         //                    text[index-matchlength] = Character(UnicodeScalar(matchlength)!)
@@ -157,6 +269,8 @@ class ViewController: NSViewController {
             string.append(chr)
         }
         textLabel.stringValue = string
+        
+//        print("tloop ", tloop," wloop ", wloop, " dloop ", dloop)
         
     }
     
