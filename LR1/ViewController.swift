@@ -238,9 +238,9 @@ class ViewController: NSViewController {
                 
                
             }
-//
-//            index += 1
-//        }
+
+            index += 1
+        }
 //
         
         
