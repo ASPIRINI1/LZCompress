@@ -181,7 +181,74 @@ class ViewController: NSViewController {
 //        print(dictionary)
 //        print(wBuf)
         
-        //MARK: - 2 TRY
+//        //MARK: - 2 TRY
+//
+//
+//        var index = maxWBufCount + 1
+//
+//        while index < text.count{
+//
+//            var bufIndex = 0
+//            var dictIndex = 0
+//         //   wBuf.append(text[index])
+//
+//            while bufIndex <= wBuf.count-1{
+//
+//                print("wBuf ",wBuf)
+//                print("dict ",dictionary)
+//
+//                if wBuf[bufIndex] == dictionary[dictIndex]{
+//                    offset = index - (wBuf.count-1)
+//                    matchlength += 1
+//                    if bufIndex < wBuf.count-1{
+//                        bufIndex += 1
+//                    }
+//                    if dictIndex < dictionary.count-1{
+//                        dictIndex += 1
+//                    }
+//
+//                }
+//
+//                if wBuf[bufIndex] != dictionary[dictIndex] && matchlength == 0{
+//                    dictionary.append(wBuf[bufIndex])
+//                    wBuf.remove(at: wBuf.startIndex)
+//                    break
+//                }
+//
+//                if wBuf[bufIndex] != dictionary[dictIndex] && matchlength > 0 || bufIndex >= maxWBufCount{
+//                    text[offset] = "o"
+//                    //text[index+1] = "l"
+//
+//                    for i in offset...(offset+matchlength){
+//                        //text[i] = " "
+//                    }
+//                    for _ in 0...bufIndex{
+//                        dictionary.append(wBuf[0])
+//                        wBuf.remove(at: wBuf.startIndex)
+//                    }
+////                    for _ in 0...bufIndex-1{
+////                        if (index+bufIndex) < text.endIndex{
+////                            wBuf.append(text[index+bufIndex])
+////                        }
+////                    }
+//
+//                    index += bufIndex-1
+//                    break
+//                }
+//
+//
+//            }
+//
+//            index += 1
+//        }
+//
+        
+        
+        
+        
+        
+        
+        //MARK: - 3 TRY
         
         
         var index = maxWBufCount + 1
@@ -190,34 +257,36 @@ class ViewController: NSViewController {
             
             var bufIndex = 0
             var dictIndex = 0
-         //   wBuf.append(text[index])
+            wBuf.append(text[index])
             
             while bufIndex <= wBuf.count-1{
                 
                 print("wBuf ",wBuf)
                 print("dict ",dictionary)
                              
-                if wBuf[bufIndex] == dictionary[dictIndex]{
-                    offset = index - (wBuf.count-1)
-                    matchlength += 1
-                    if bufIndex < wBuf.count-1{
-                        bufIndex += 1
-                    }
-                    if dictIndex < dictionary.count-1{
-                        dictIndex += 1
-                    }
-
-                }
                 
-                if wBuf[bufIndex] != dictionary[dictIndex] && matchlength == 0{
+                if dictionary[0] == wBuf[bufIndex]{
+                    offset = index - (wBuf.count-1)
+                    
+                    for d in dictionary {
+                        if wBuf[bufIndex] == d && bufIndex < wBuf.count-1 {
+                            matchlength += 1
+                            bufIndex += 1
+                        }
+                    }
+                    bufIndex -= 1
+                    
+                } else {
                     dictionary.append(wBuf[bufIndex])
                     wBuf.remove(at: wBuf.startIndex)
                     break
                 }
 
                 if wBuf[bufIndex] != dictionary[dictIndex] && matchlength > 0 || bufIndex >= maxWBufCount{
+                   
+                    
                     text[offset] = "o"
-                    //text[index+1] = "l"
+//                    text[offset+1] = Character("\(matchlength)")
 
                     for i in offset...(offset+matchlength){
                         //text[i] = " "
@@ -226,27 +295,23 @@ class ViewController: NSViewController {
                         dictionary.append(wBuf[0])
                         wBuf.remove(at: wBuf.startIndex)
                     }
-//                    for _ in 0...bufIndex-1{
-//                        if (index+bufIndex) < text.endIndex{
-//                            wBuf.append(text[index+bufIndex])
-//                        }
-//                    }
+                    
+                    for i in 1...bufIndex{
+                        if (index+i) < text.endIndex{
+                            wBuf.append(text[index+i])
+                        }
+                    }
 
                     index += bufIndex-1
                     break
                 }
-                
-               
             }
 
             index += 1
         }
-//
         
-        
-        
-        
-        
+        print("dct",dictionary)
+        print("buf",wBuf)
         
         
         
