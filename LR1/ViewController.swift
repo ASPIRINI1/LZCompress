@@ -319,11 +319,13 @@ class ViewController: NSViewController {
         
         
         var index = maxWBufCount + 1
+        var dictIndex = 0
+        var bufIndex = 0
         
         while index < text.count{
             
-            var bufIndex = 0
-            var dictIndex = 0
+            bufIndex = 0
+            dictIndex = 0
             wBuf.append(text[index])
             
             while bufIndex <= wBuf.count-1{
@@ -367,58 +369,40 @@ class ViewController: NSViewController {
                         text[j] = " "
                         j += 1
                     }
-                    
-//                    for i in offset...(offset+(matchlength-1)){
-//
-//                    }
-                    
-                    
-                    
                     text[offset] = "∑"
 //                    text[offset+1] = "¢"
                     
-                        
-
-                    
-                    
-                    
-                    // ВРОДЕ КАК ПРОБЛЕМА В ЦИКЛАХ ДЛЯ ЗАПОЛЕННИЯ БУФЕРА
-//                    for _ in 1...bufIndex{
-//                        dictionary.append(wBuf[0])
-//                        wBuf.remove(at: wBuf.startIndex)
-//                    }
-
-//                    for i in 1...bufIndex{
-//                        if (index+i) < text.endIndex{
-//                            wBuf.append(text[index+i])
-//                        }
-//                    }
-
-
                     while i < bufIndex{
                         dictionary.append(wBuf[0])
                         wBuf.remove(at: wBuf.startIndex)
                         i += 1
                     }
-                    while i < bufIndex{
-                        if (index+i) < text.endIndex{
-                            wBuf.append(text[index+i])
+                    
+                    var m = 0
+                    
+                    while m < matchlength-1{
+//                        if index + m < text.endIndex{ // не кодирует последний символ сохраняет его в буфер
+                        if index + 1 < text.endIndex{ // не обязательный
+//                            wBuf.append(text[index+m])
+                            print("text ", text[index+1])
+                            wBuf.append(text[index+1])
+                            index += 1
                         }
-                        i += 1
+                        
+                        m += 1
                     }
                     
-
-                    //index += bufIndex-1
                     break
                 }
             }
 
             index += 1
         }
+
         
         print("dct",dictionary)
         print("buf",wBuf)
-        
+        print(text.endIndex)
         
         
         
