@@ -335,11 +335,12 @@ class ViewController: NSViewController {
                          
                 while dictIndex < dictionary.count-1{
                     
-                    if dictionary[dictIndex] == wBuf[bufIndex] && bufIndex < wBuf.count-1{
+                    if dictionary[dictIndex] == wBuf[bufIndex] && bufIndex <= wBuf.count-1{
                         offset = index - (wBuf.count-1)
                         matchlength += 1
                         bufIndex += 1
                     }
+                    if bufIndex == wBuf.count { break }
                     if matchlength > 0 && wBuf[bufIndex] != dictionary[dictIndex+1]{
                         //bufIndex -= 1
                         break
