@@ -251,7 +251,7 @@ class ViewController: NSViewController {
         //MARK: - 3 TRY
         
         
-        var index = maxWBufCount + 1
+     /*   var index = maxWBufCount + 1
         
         while index < text.count{
             
@@ -263,9 +263,8 @@ class ViewController: NSViewController {
                 
                 print("wBuf ",wBuf)
                 print("dict ",dictionary)
-                             
-                
-                if dictionary[0] == wBuf[bufIndex]{
+                         
+                if dictionary[dictIndex] == wBuf[0]{
                     offset = index - (wBuf.count-1)
                     
                     for d in dictionary {
@@ -303,6 +302,112 @@ class ViewController: NSViewController {
                     }
 
                     index += bufIndex-1
+                    break
+                }
+            }
+
+            index += 1
+        }
+        
+        print("dct",dictionary)
+        print("buf",wBuf)*/
+        
+        
+        
+        
+        //MARK: - 4 TRY
+        
+        
+        var index = maxWBufCount + 1
+        
+        while index < text.count{
+            
+            var bufIndex = 0
+            var dictIndex = 0
+            wBuf.append(text[index])
+            
+            while bufIndex <= wBuf.count-1{
+                
+                print("wBuf ",wBuf)
+                print("dict ",dictionary)
+                
+                matchlength = 0
+                         
+                while dictIndex < dictionary.count-1{
+                    
+                    if dictionary[dictIndex] == wBuf[bufIndex] && bufIndex < wBuf.count-1{
+                        offset = index - (wBuf.count-1)
+                        matchlength += 1
+                        bufIndex += 1
+                    }
+                    if matchlength > 0 && wBuf[bufIndex] != dictionary[dictIndex+1]{
+                        //bufIndex -= 1
+                        break
+                    }
+                    
+
+                    dictIndex += 1
+                }
+                
+                if matchlength == 0{
+                    dictionary.append(wBuf[0])
+                    wBuf.remove(at: wBuf.startIndex)
+                    break
+                }
+
+                
+                if matchlength > 0 && wBuf.count >= 1 /* || bufIndex >= maxWBufCount*/{
+                   
+                    var i = 0
+                    var j = offset
+                    let countOfReducedChr = offset+matchlength
+                    
+                    while j < countOfReducedChr{
+                        text[j] = " "
+                        j += 1
+                    }
+                    
+//                    for i in offset...(offset+(matchlength-1)){
+//
+//                    }
+                    
+                    
+                    
+                    text[offset] = "∑"
+//                    text[offset+1] = "¢"
+                    
+                        
+
+                    
+                    
+                    
+                    // ВРОДЕ КАК ПРОБЛЕМА В ЦИКЛАХ ДЛЯ ЗАПОЛЕННИЯ БУФЕРА
+//                    for _ in 1...bufIndex{
+//                        dictionary.append(wBuf[0])
+//                        wBuf.remove(at: wBuf.startIndex)
+//                    }
+
+//                    for i in 1...bufIndex{
+//                        if (index+i) < text.endIndex{
+//                            wBuf.append(text[index+i])
+//                        }
+//                    }
+
+
+                    while i < bufIndex{
+                        dictionary.append(wBuf[0])
+                        wBuf.remove(at: wBuf.startIndex)
+                        i += 1
+                    }
+                    while i < bufIndex{
+                        if (index+i) < text.endIndex{
+                            wBuf.append(text[index+i])
+                        }
+                        i += 1
+                    }
+                    
+
+                    //index += bufIndex-1
                     break
                 }
             }
