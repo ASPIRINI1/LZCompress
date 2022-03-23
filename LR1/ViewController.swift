@@ -359,7 +359,7 @@ class ViewController: NSViewController {
                 }
 
                 
-                if matchlength > 0 && wBuf.count >= 1 /* || bufIndex >= maxWBufCount*/{
+                if matchlength > 0 && wBuf.count >= 1 /* || bufIndex >= maxWBufCount*/{ // && и дальше мб лишнее
                    
                     var i = 0
                     var j = offset
@@ -399,6 +399,73 @@ class ViewController: NSViewController {
             index += 1
         }
 
+        matchlength = 0
+        dictIndex = 0
+        bufIndex = 0
+        index -= 1
+                 
+        while dictIndex < dictionary.count-1{
+            
+            if dictionary[dictIndex] == wBuf[bufIndex] && bufIndex <= wBuf.count-1{
+                offset = index - (wBuf.count-1)
+                matchlength += 1
+                bufIndex += 1
+            }
+            if bufIndex == wBuf.count { break }
+            if matchlength > 0 && wBuf[bufIndex] != dictionary[dictIndex+1]{
+                //bufIndex -= 1
+                break
+            }
+            
+
+            dictIndex += 1
+        }
+        
+        if matchlength == 0{
+            dictionary.append(wBuf[0])
+            wBuf.remove(at: wBuf.startIndex)
+            
+        }
+
+        
+        if matchlength > 0 && wBuf.count >= 1 /* || bufIndex >= maxWBufCount*/{ // && и дальше мб лишнее
+           
+            var i = 0
+            var j = offset
+            let countOfReducedChr = offset+matchlength
+            
+            while j < countOfReducedChr{
+                text[j] = " "
+                j += 1
+            }
+            text[offset] = "∑"
+//                    text[offset+1] = "¢"
+            
+            while i < bufIndex{
+                dictionary.append(wBuf[0])
+                wBuf.remove(at: wBuf.startIndex)
+                i += 1
+            }
+            
+            var m = 0
+            
+            while m < matchlength-1{
+//                        if index + m < text.endIndex{ // не кодирует последний символ сохраняет его в буфер
+                if index + 1 < text.endIndex{ // не обязательный
+//                            wBuf.append(text[index+m])
+                    print("text ", text[index+1])
+                    wBuf.append(text[index+1])
+                    index += 1
+                }
+                
+                m += 1
+            }
+            
+        }
+        
+        
+        
+        
         
         print("dct",dictionary)
         print("buf",wBuf)
