@@ -52,6 +52,7 @@
 		DEABB9A227DEB56F00C8A053 /* LR1 */ = {
 			isa = PBXGroup;
 			children = (
+				DEE68ACE27ECF5ED00BA6A55 /* CompressMethods */,
 				DEABB9A327DEB56F00C8A053 /* AppDelegate.swift */,
 				DEABB9A527DEB56F00C8A053 /* ViewController.swift */,
 				DEABB9A727DEB57000C8A053 /* Assets.xcassets */,
@@ -59,6 +60,13 @@
 				DEABB9AC27DEB57000C8A053 /* LR1.entitlements */,
 			);
 			path = LR1;
+			sourceTree = "<group>";
+		};
+		DEE68ACE27ECF5ED00BA6A55 /* CompressMethods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CompressMethods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
