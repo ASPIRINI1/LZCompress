@@ -439,7 +439,7 @@ class ViewController: NSViewController {
                 matchlength += 1
                 bufIndex += 1
             }
-            if bufIndex == wBuf.count { break }
+            if bufIndex == wBuf.count || dictIndex == dictionary.count-1 { break }
             if matchlength > 0 && wBuf[bufIndex] != dictionary[dictIndex+1]{
                 //bufIndex -= 1
                 break
