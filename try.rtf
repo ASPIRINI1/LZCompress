@@ -1,0 +1,304 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;\f2\fswiss\fcharset0 Helvetica;
+\f3\fswiss\fcharset0 Helvetica-Oblique;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c99985;\cssrgb\c0\c1\c1;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab593
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3         
+\f1\b \cf2 \cb3 var
+\f0\b0 \cf2 \cb3  n = 60\
+        
+\f1\b \cf2 \cb3 var
+\f0\b0 \cf2 \cb3  w = 20 // Nall - nCoded\
+        \
+        
+\f1\b \cf2 \cb3 var
+\f0\b0 \cf2 \cb3  maxWBufCount = 6\
+        
+\f1\b \cf2 \cb3 var
+\f0\b0 \cf2 \cb3  maxDictCount = 12\
+        \
+        \
+        
+\f1\b \cf2 \cb3 var
+\f0\b0 \cf2 \cb3  dictionary: [Character] = [" "]\
+        \
+        
+\f1\b \cf2 \cb3 var
+\f0\b0 \cf2 \cb3  wBuf: [Character] = [" "]\
+        \
+//        dictionary.removeAll()\
+        wBuf.removeAll()\
+        dictionary[0] = text[0]\
+        \
+        // fill Wbufer\
+        
+\f1\b \cf2 \cb3 for
+\f0\b0 \cf2 \cb3  i 
+\f1\b \cf2 \cb3 in
+\f0\b0 \cf2 \cb3  1...maxWBufCount \{\
+            wBuf.append(text[i])\
+        \}\
+        \
+//        dictionary.append(text[0])\
+        \
+//        var dloop = 0\
+//        var wloop = 0\
+//        var tloop = 0\
+//\
+//\
+//        var offset = 0\
+//        var matchlength = 0\
+        \
+        //
+\f1\b \cf2 \cb3 MARK: - 1 TRY
+\f0\b0 \cf2 \cb3 \
+        \
+        /*for var index in (maxWBufCount+1)...text.count-1\{\
+\
+            var wChr = 0\
+            var dChr = 0\
+            offset = 0\
+            matchlength = 0\
+            \
+            \
+            // equals char from dictionary and chars from wBuf\
+            while wChr <= wBuf.count-1\{\
+                \
+                //search in dictionary\
+                while dChr <= dictionary.count-1\{\
+                \
+                    if wBuf.count > 0 \{\
+                        \
+                        // search equals charecters, it count & position in text where neet put ref\
+                        if wBuf[wChr] == dictionary[dChr] && wChr < wBuf.count-1\{\
+                            offset = index - wBuf.count\
+                            matchlength += 1\
+                            wChr += 1\
+                            dChr += 1\
+                        \}\
+                        \
+                        // non equals char or wBuf fully checked\
+                        if wBuf[wChr] != dictionary[dChr] || wChr == wBuf.count-1\{\
+                            \
+                            //add equals characher to dictionary\
+                            for i in 0...wChr\{\
+                                dictionary.append(wBuf[i])\
+                            \}\
+                            index += 1\
+                            \
+                            // position in text where need put ref\
+                            if index <= text.count-1\{\
+                                wBuf.append(text[index])\
+                            \}\
+                            // remowe all from wBuf when all wBuf added to dictionary\
+                            if wChr == wBuf.count-1\{\
+                                wBuf.removeAll()\
+                            \} else \{ //remowe first el from buf when it added to dict !!!!!!!!!! need insert loop with deleting char from boof when chars count > 1\
+//                                wBuf.remove(at: 0)\
+//                                wChr = 0\
+                                for i in 0...wBuf.count-1-matchlength\{ //???????????\
+                                    wBuf.remove(at: 0)\
+                                \}\
+                            \}\
+                        \}\
+                    \}\
+        \
+        \
+        \
+\
+\
+                    if wBuf.count == 0\{\
+                        print("dictionary")\
+\
+                        for i in dictionary\{\
+                            print(i)\
+                        \}\
+                        print("wBuf")\
+                        for i in wBuf\{\
+                            print(i)\
+                        \}\
+                        break\
+                    \}\
+                    if dictionary.count >= maxDictCount\{\
+                        dictionary.remove(at: 0)\
+                    \}\
+                    dloop += 1\
+                \}\
+    \
+                    wloop += 1\
+            \}\
+            \
+            tloop += 1\
+            print("offset ", offset, " matchlength ", matchlength)\
+            \
+        \
+       \
+            \
+            if offset != 0 && matchlength > 0\{\
+    //                    text[offset] = Character("\\(wChr-1)")\
+    //                    text[offset+1] = Character("\\(matchlength)")\
+                print(offset)\
+                print(matchlength)\
+                for t in offset...(offset + matchlength)\{\
+                    text[t] = " "\
+                \}\
+            \}\
+        \} */\
+        \
+//        print(text)\
+//        print(dictionary)\
+//        print(wBuf)\
+        \
+//        //
+\f1\b \cf2 \cb3 MARK: - 2 TRY
+\f0\b0 \cf2 \cb3 \
+//\
+//\
+//        var index = maxWBufCount + 1\
+//\
+//        while index < text.count\{\
+//\
+//            var bufIndex = 0\
+//            var dictIndex = 0\
+//         //   wBuf.append(text[index])\
+//\
+//            while bufIndex <= wBuf.count-1\{\
+//\
+//                print("wBuf ",wBuf)\
+//                print("dict ",dictionary)\
+//\
+//                if wBuf[bufIndex] == dictionary[dictIndex]\{\
+//                    offset = index - (wBuf.count-1)\
+//                    matchlength += 1\
+//                    if bufIndex < wBuf.count-1\{\
+//                        bufIndex += 1\
+//                    \}\
+//                    if dictIndex < dictionary.count-1\{\
+//                        dictIndex += 1\
+//                    \}\
+//\
+//                \}\
+//\
+//                if wBuf[bufIndex] != dictionary[dictIndex] && matchlength == 0\{\
+//                    dictionary.append(wBuf[bufIndex])\
+//                    wBuf.remove(at: wBuf.startIndex)\
+//                    break\
+//                \}\
+//\
+//                if wBuf[bufIndex] != dictionary[dictIndex] && matchlength > 0 || bufIndex >= maxWBufCount\{\
+//                    text[offset] = "o"\
+//                    //text[index+1] = "l"\
+//\
+//                    for i in offset...(offset+matchlength)\{\
+//                        //text[i] = " "\
+//                    \}\
+//                    for _ in 0...bufIndex\{\
+//                        dictionary.append(wBuf[0])\
+//                        wBuf.remove(at: wBuf.startIndex)\
+//                    \}\
+///
+\f2 \cf2 \cb3 /                    for 
+\f0 \cf2 \cb3 _
+\f3\i \cf2 \cb3  in 0...bufIndex-1\{
+\f0\i0 \cf2 \cb3 \
+///
+\f3\i \cf2 \cb3 /                        if (index+bufIndex) 
+\f0\i0 \cf2 \cb3 < text.endIndex\{\
+///
+\f3\i \cf2 \cb3 /                            wBuf.append(text[index+bufIndex])
+\f0\i0 \cf2 \cb3 \
+///
+\f3\i \cf2 \cb3 /                        \}
+\f0\i0 \cf2 \cb3 \
+///
+\f3\i \cf2 \cb3 /                    \}
+\f0\i0 \cf2 \cb3 \
+//\
+//                    index += bufIndex-1\
+//                    break\
+//                \}\
+//\
+//\
+//            \}\
+//\
+//            index += 1\
+//        \}\
+//\
+        \
+        \
+        \
+        \
+        \
+        \
+        //
+\f1\b \cf2 \cb3 MARK: - 3 TRY
+\f0\b0 \cf2 \cb3 \
+        \
+        \
+     /*   var index = maxWBufCount + 1\
+        \
+        while index < text.count\{\
+            \
+            var bufIndex = 0\
+            var dictIndex = 0\
+            wBuf.append(text[index])\
+            \
+            while bufIndex <= wBuf.count-1\{\
+                \
+                print("wBuf ",wBuf)\
+                print("dict ",dictionary)\
+                         \
+                if dictionary[dictIndex] == wBuf[0]\{\
+                    offset = index - (wBuf.count-1)\
+                    \
+                    for d in dictionary \{\
+                        if wBuf[bufIndex] == d && bufIndex < wBuf.count-1 \{\
+                            matchlength += 1\
+                            bufIndex += 1\
+                        \}\
+                    \}\
+                    bufIndex -= 1\
+                    \
+                \} else \{\
+                    dictionary.append(wBuf[bufIndex])\
+                    wBuf.remove(at: wBuf.startIndex)\
+                    break\
+                \}\
+\
+                if wBuf[bufIndex] != dictionary[dictIndex] && matchlength > 0 || bufIndex >= maxWBufCount\{\
+                   \
+                    \
+                    text[offset] = "o"\
+//                    text[offset+1] = Character("\\(matchlength)")\
+\
+                    for i in offset...(offset+matchlength)\{\
+                        //text[i] = " "\
+                    \}\
+                    for _ in 0...bufIndex\{\
+                        dictionary.append(wBuf[0])\
+                        wBuf.remove(at: wBuf.startIndex)\
+                    \}\
+                    \
+                    for i in 1...bufIndex\{\
+                        if (index+i) < text.endIndex\{\
+                            wBuf.append(text[index+i])\
+                        \}\
+                    \}\
+\
+                    index += bufIndex-1\
+                    break\
+                \}\
+            \}\
+\
+            index += 1\
+        \}\
+        \
+        print("dct",dictionary)\
+        print("buf",wBuf)*/\
+        \
+        \
+        }
