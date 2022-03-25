@@ -11,6 +11,7 @@
 		DEABB9A627DEB56F00C8A053 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEABB9A527DEB56F00C8A053 /* ViewController.swift */; };
 		DEABB9A827DEB57000C8A053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEABB9A727DEB57000C8A053 /* Assets.xcassets */; };
 		DEABB9AB27DEB57000C8A053 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEABB9A927DEB57000C8A053 /* Main.storyboard */; };
+		DEE68AD027ECF65B00BA6A55 /* LZ77.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE68ACF27ECF65B00BA6A55 /* LZ77.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		DEABB9A727DEB57000C8A053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEABB9AA27DEB57000C8A053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEABB9AC27DEB57000C8A053 /* LR1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LR1.entitlements; sourceTree = "<group>"; };
+		DEE68ACF27ECF65B00BA6A55 /* LZ77.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LZ77.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		DEE68ACE27ECF5ED00BA6A55 /* CompressMethods */ = {
 			isa = PBXGroup;
 			children = (
+				DEE68ACF27ECF65B00BA6A55 /* LZ77.swift */,
 			);
 			path = CompressMethods;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE68AD027ECF65B00BA6A55 /* LZ77.swift in Sources */,
 				DEABB9A627DEB56F00C8A053 /* ViewController.swift in Sources */,
 				DEABB9A427DEB56F00C8A053 /* AppDelegate.swift in Sources */,
 			);
