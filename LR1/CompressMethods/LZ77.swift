@@ -15,7 +15,7 @@ class LZ77{
         case perfomance
     }
     
-    func compress(txt: [Character], compressDegree: compressDegree){
+    func compress(txt: [Character], compressDegree: compressDegree) -> [Character]{
         
         let maxWBufCount = 6
         var maxDictCount = 12
@@ -212,6 +212,7 @@ class LZ77{
         print("buf",wBuf)
         print(text.endIndex)
         
+        return text
     }
     
     func decompress(txt: [Character]) {

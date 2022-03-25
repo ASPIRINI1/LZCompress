@@ -56,11 +56,12 @@ class ViewController: NSViewController {
         
         let lz77 = LZ77()
        
+        
          
 //        text[index-matchlength] = Character(UnicodeScalar(matchlength)!)
         
         var string = ""
-        for chr in text{
+        for chr in lz77.compress(txt: text, compressDegree: .speed){
             string.append(chr)
         }
         textLabel.stringValue = string
