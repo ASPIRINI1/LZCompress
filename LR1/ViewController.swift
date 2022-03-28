@@ -40,11 +40,6 @@ class ViewController: NSViewController {
         fileData = try! String(contentsOfFile: path)
         textLabel.isHidden = false
         textLabel.stringValue = fileData
-//        str = fileData
-        text.removeAll()
-        for chr in fileData{
-            text.append(chr)
-        }
     }
     
     @IBAction func writeToFileAction(_ sender: Any) {
@@ -53,19 +48,17 @@ class ViewController: NSViewController {
     
     @IBAction func compressAction(_ sender: Any) {
         
-        
         let lz77 = LZ77()
-       
+        let lz78 = LZ78()
+        let lzss = LZSS()
         
-         
-//        text[index-matchlength] = Character(UnicodeScalar(matchlength)!)
+//        textLabel.stringValue = lz77.compress(txt: fileData, compressDegree: .speed)
+//        lz77.decompress(txt: lz77.compress(txt: fileData, compressDegree: .speed))
         
-        var string = ""
-        for chr in lz77.compress(txt: text, compressDegree: .speed){
-            string.append(chr)
-        }
-        textLabel.stringValue = string
+//        textLabel.stringValue = lz78.compress(txt: fileData)
+//        lz78.decompress(txt: lz78.compress(txt: fileData))
         
+        lzss.compress(text: fileData)
         
     }
     

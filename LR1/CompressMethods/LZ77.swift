@@ -9,14 +9,18 @@ import Foundation
 
 class LZ77{
     
+    private let convert = Convert()
+    
     enum compressDegree {
         case speed
         case mid
         case perfomance
     }
     
-    func compress(txt: [Character], compressDegree: compressDegree) -> [Character]{
+    func compress(txt: String, compressDegree: compressDegree) -> String{
         
+        
+        var text = convert.toCharacter(text: txt)
         let maxWBufCount = 6
         var maxDictCount = 12
         
@@ -32,7 +36,6 @@ class LZ77{
         
         
         
-        var text = txt
 //        var n = 60
 //        var w = 20 // Nall - nCoded
 //
@@ -84,14 +87,14 @@ class LZ77{
                 
                 matchlength = 0
                          
-                while dictIndex < dictionary.count-1{
+                while dictIndex < dictionary.count{
                     
                     if dictionary[dictIndex] == wBuf[bufIndex] && bufIndex <= wBuf.count-1{
                         offset = index - (wBuf.count-1)
                         matchlength += 1
                         bufIndex += 1
                     }
-                    if bufIndex == wBuf.count { break }
+                    if bufIndex == wBuf.count || dictIndex == dictionary.count-1  { break }
                     if matchlength > 0 && wBuf[bufIndex] != dictionary[dictIndex+1]{
                         break
                     }
@@ -212,11 +215,20 @@ class LZ77{
         print("buf",wBuf)
         print(text.endIndex)
         
-        return text
+        return convert.toString(text: text)
     }
     
-    func decompress(txt: [Character]) {
+    func decompress(txt: String) -> String{
+
+        var text = convert.toCharacter(text: txt)
+        var answer = ""
         
+        for chr in 0...text.count-1{
+            
+        }
+        
+        
+        return ""
     }
     
 }
