@@ -138,13 +138,22 @@ class LZSS{
             var bufIndex = startBuf
             while bufIndex <= endBuf{
                 var dictIndex = 0
-                while dictIndex <= dictEnd{
+                of = 0
+                ma = 0
+                
+                if startBuf == 33 {
+                    
+                }
+                if dictEnd == dictSize{
+                    
+                }
+                while dictIndex < dictEnd{
                     if txt[bufIndex] == txt[dictIndex] && bufIndex <= endBuf{
                         matchlength += 1
                         offset = dictIndex - matchlength + 1
                         bufIndex += 1
                     }
-                    if bufIndex == endBuf || dictIndex == dictEnd  { break }
+                    if bufIndex == endBuf+1 || dictIndex == dictEnd  { break }
                     if matchlength > 0 && txt[bufIndex] != txt[dictIndex+1] {
                         
                         if ma < matchlength{
@@ -162,8 +171,11 @@ class LZSS{
                     dictIndex += 1
                 }
                 
-                offset = of
-                matchlength = ma
+                if ma>0{
+                    offset = of
+                    matchlength = ma
+                }
+                
                 
 //                print(matchlength)
 //                print(offset)
@@ -175,14 +187,28 @@ class LZSS{
 //                    print(answer)
 //                    print(txt.count)
                     
-                    if dictEnd <= dictSize {
-                        dictEnd += 1
-                        startBuf += 1
-                        if endBuf < txt.count{
-                            endBuf += 1
-                        }
-                    } else {
+//                    if dictEnd < dictSize {
+//                        dictEnd += 1
+//                        startBuf += 1
+//                        if endBuf < txt.count{
+//                            endBuf += 1
+//                        }
+//                    } else {
+//                        txt.removeFirst()
+//                        dictEnd -= 1
+//                        startBuf -= 1
+//                        endBuf -= 1
+//                    }
+                    dictEnd += 1
+                    startBuf += 1
+                    if endBuf < txt.count{
+                        endBuf += 1
+                    }
+                    if dictEnd > dictSize{
                         txt.removeFirst()
+                        dictEnd -= 1
+                        startBuf -= 1
+                        endBuf -= 1
                     }
                     
                     if endBuf > txt.count-1{
@@ -212,10 +238,18 @@ class LZSS{
 //                    answer.append(txt[startBuf+matchlength+1])
 //
 //                    if startBuf + matchlength < txt.count {
+                    if startBuf + matchlength < txt.count-1{
                         answr.append(( offset, matchlength ,txt[startBuf+matchlength]))
                         print(txt[startBuf])
                         print(offset,matchlength)
                         print(txt[startBuf+matchlength])
+                    } else {
+                        answr.append(( offset, matchlength ," "))
+                        print(txt[startBuf])
+                        print(offset,matchlength)
+                    }
+                        
+
 //                    } else {
 ////                        answr.append(( offset, matchlength ,txt.last!))
 //                        print(txt[startBuf])
