@@ -109,58 +109,93 @@ class LZSS{
         
 //        MARK: - fd
         
-        var bufSize = 7
+        let bufSize = 7
         
         var startBuf = 1
         var endBuf = bufSize + 1
         
         var index = endBuf
         
-        var dictSize = 50
+        let dictSize = 31
         
-        var dictEnd = 0
+        var dictEnd = 1
         
         var offset = 0
         var matchlength = 0
         
         var answer = ""
+        var of = 0
+        var ma = 0
         
-        var answr: [(offset:Int, matchlength:Int, Character)] = []
+        var answr: [(_offset:Int, _matchlength:Int, Character)] = []
+        answr.append(( 0,  0, txt[0]))
         answer.append(txt[0])
+        
+        
+        print(txt.count)
         
         while index < txt.count{
             var bufIndex = startBuf
-            while bufIndex < endBuf{
+            while bufIndex <= endBuf{
                 var dictIndex = 0
-                while dictIndex < dictEnd{
+                while dictIndex <= dictEnd{
                     if txt[bufIndex] == txt[dictIndex] && bufIndex <= endBuf{
                         matchlength += 1
                         offset = dictIndex - matchlength + 1
                         bufIndex += 1
                     }
                     if bufIndex == endBuf || dictIndex == dictEnd  { break }
-                    if matchlength > 0 && txt[bufIndex] != txt[dictIndex+1] { break }
+                    if matchlength > 0 && txt[bufIndex] != txt[dictIndex+1] {
+                        
+                        if ma < matchlength{
+                            of = offset
+                            ma = matchlength
+
+                        }
+//
+//
+                        matchlength = 0
+//
+                        bufIndex = startBuf
+//                        break
+                    }
                     dictIndex += 1
                 }
                 
+                offset = of
+                matchlength = ma
                 
 //                print(matchlength)
 //                print(offset)
                 
+                
                 if matchlength == 0{
-                    answer.append(txt[startBuf])
-                    answr.append((offset: 0, matchlength: 0, txt[startBuf]))
-                    print(answer)
-                    print(txt.count)
-                    if dictEnd >= dictSize {
+//                    answer.append(txt[startBuf])
+                    answr.append(( 0,  0, txt[startBuf]))
+//                    print(answer)
+//                    print(txt.count)
+                    
+                    if dictEnd <= dictSize {
+                        dictEnd += 1
+                        startBuf += 1
+                        if endBuf < txt.count{
+                            endBuf += 1
+                        }
+                    } else {
                         txt.removeFirst()
                     }
-//                    print(txt.count)
-                    dictEnd += 1
-                    startBuf += 1
-                    if endBuf <= txt.count-1{
-                        endBuf += 1
+                    
+                    if endBuf > txt.count-1{
+                        endBuf = txt.count-1
                     }
+//                    print(txt.count)
+                    
+                    
+//                    dictEnd += 1
+//                    startBuf += 1
+//                    if endBuf <= txt.count-1{
+//                        endBuf += 1
+//                    }
                     break
                 }
                 
@@ -172,33 +207,41 @@ class LZSS{
                         d += 1
                     }
                     
-                    answer.append("\(offset)")
-                    answer.append("\(matchlength)")
-                    answer.append(txt[startBuf+matchlength+1])
-                    
-                    answr.append((offset: offset, matchlength: matchlength ,txt[startBuf+matchlength]))
-                    
-                    
-                    print(txt[startBuf])
-                    print(offset,matchlength)
-                    print(txt[startBuf+matchlength])
-
-                    
-                    startBuf += matchlength + 1
-                    if endBuf <= txt.count-1{
-                        endBuf += matchlength + 1
+//                    answer.append("\(offset)")
+//                    answer.append("\(matchlength)")
+//                    answer.append(txt[startBuf+matchlength+1])
+//
+//                    if startBuf + matchlength < txt.count {
+                        answr.append(( offset, matchlength ,txt[startBuf+matchlength]))
+                        print(txt[startBuf])
+                        print(offset,matchlength)
+                        print(txt[startBuf+matchlength])
+//                    } else {
+////                        answr.append(( offset, matchlength ,txt.last!))
+//                        print(txt[startBuf])
+//                        print(offset,matchlength)
+//                        print(txt.last)
+//                    }
+//
+                    endBuf += matchlength + 1
+                    if endBuf > txt.count-1{
+                        endBuf = txt.count-1
                     }
-                    dictEnd += matchlength + 1
+                    startBuf += matchlength + 1
                     
-                    matchlength = 0
+                    dictEnd = startBuf - 1
                     
                     while dictEnd > dictSize && !txt.isEmpty{
                         txt.removeFirst()
-                        dictEnd += 1
+                        startBuf -= 1
+                        endBuf -= 1
+                        dictEnd -= 1
+                        index -= 1
                     }
-//                    for i in 0...dictEnd{
-//                        print(txt[i])
-//                    }
+                    
+                    matchlength = 0
+                    ma = 0
+
 //                    index = startBuf // ???????
                     break
                 }
@@ -208,7 +251,7 @@ class LZSS{
             index += 1
         }
         
-        print(answer)
+//        print(answer)
         print(answr)
         return text
     }
