@@ -50,7 +50,7 @@ class ViewController: NSViewController {
         
         let lz77 = LZ77()
         let lz78 = LZ78()
-        let lzss = LZSS()
+        let lzss = LZ77()
         
 //        textLabel.stringValue = lz77.compress(txt: fileData, compressDegree: .speed)
 //        lz77.decompress(txt: lz77.compress(txt: fileData, compressDegree: .speed))

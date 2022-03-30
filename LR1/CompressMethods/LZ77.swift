@@ -1,234 +1,296 @@
 //
-//  LZ77.swift
+//  LZSS.swift
 //  LR1
 //
-//  Created by Станислав Зверьков on 24.03.2022.
+//  Created by Станислав Зверьков on 27.03.2022.
 //
 
 import Foundation
 
 class LZ77{
     
-    private let convert = Convert()
+    let convert = Convert()
     
-    enum compressDegree {
-        case speed
-        case mid
-        case perfomance
-    }
-    
-    func compress(txt: String, compressDegree: compressDegree) -> String{
+    func compress(text: String) -> String{
         
+        var txt = convert.toCharacter(text: text)
         
-        var text = convert.toCharacter(text: txt)
-        let maxWBufCount = 6
-        var maxDictCount = 12
-        
-//        switch compressDegree {
-//        case .speed:
-//            maxDictCount = 50
-//        case .mid:
-//            maxDictCount = 100
-//        case .perfomance:
-//            maxDictCount = 150
-//        }
-        
-        
-        
-        
-//        var n = 60
-//        var w = 20 // Nall - nCoded
+//        var dictionary: [Character] = []
+//        var buf: [Character] = []
+//        var maxBufCount = 7
+//        var offset = 0
+//        var matchlength = 0
+//        var maxDictCount = 50
 //
-
+//        var answer: [(offset:Int, matchLength:Int, Character)]
+//
+//        for i in 0...maxBufCount{
+//            buf.append(txt[i])
+//        }
+//
+//        var index = maxBufCount
+//
+//        while index < txt.count{
+//            var d = findSimilar(textPos: index, buf: buf)
+//            moveBufer(matchlength: matchlength)
+//            if index > maxDictCount{
+//                txt.removeFirst()
+//            }
+//        }
+//
+//        func moveBufer(matchlength: Int){
+//    //        while i < bufIndex{
+//    //            dictionary.append(wBuf[0])
+//    //            wBuf.remove(at: wBuf.startIndex)
+//    //            i += 1
+//    //        }
+//    //
+//    //        var m = 0
+//    //
+//    //        while m < matchlength-1{
+//    ////                        if index + m < text.endIndex{ // не кодирует последний символ сохраняет его в буфер
+//    //            if index + 1 < text.endIndex{ // не обязательный
+//    //                print("text ", text[index+1])
+//    //                wBuf.append(text[index+1])
+//    //                index += 1
+//    //            }
+//    //
+//    //            m += 1
+//    //        }
+//
+//            var i = 0
+//
+//            while i < matchlength {
+////                dictionary.append(buf.first!)
+//                buf.removeFirst()
+//
+//                if !txt.isEmpty{
+//                buf.append(txt.first!)
+//                }
+//
+//            }
+//
+//        }
+//
+//
+//        func findSimilar(textPos: Int, buf: [Character]) -> (Int,Int){
+//
+//            var bufIndex = 0
+//            var offset = 0
+//            var matchlength = 0
+//            var index = textPos
+//
+//            while bufIndex < buf.count{
+//
+//                var dictIndex = 0
+//
+//                while dictIndex < textPos{
+//
+//                    if txt[dictIndex] == buf[bufIndex] && bufIndex <= buf.count-1{
+//                        offset = index - (buf.count-1)
+//                        matchlength += 1
+//                        bufIndex += 1
+//                    }
+//                    if bufIndex == buf.count || dictIndex == textPos-1  { break }
+//                    if matchlength > 0 && buf[bufIndex] != txt[dictIndex+1]{
+//                        break
+//                    }
+//
+//
+//                    dictIndex += 1
+//                }
+//
+//            }
+//            return (offset,matchlength)
+//        }
+//
+//
         
         
-        var dictionary: [Character] = [" "]
+//        MARK: - fd
         
-        var wBuf: [Character] = [" "]
+        let bufSize = 7
         
-//        dictionary.removeAll()
-        wBuf.removeAll()
-        dictionary[0] = text[0]
+        var startBuf = 1
+        var endBuf = bufSize + 1
         
-        // fill Wbufer
-        for i in 1...maxWBufCount {
-            wBuf.append(text[i])
-        }
+        var index = endBuf
         
-
+        let dictSize = 31
         
+        var dictEnd = 1
         
-        //MARK: - 4 TRY
-        
-        
-        var index = maxWBufCount + 1
-        var dictIndex = 0
-        var bufIndex = 0
-        
-        var matchlength = 0
         var offset = 0
-
+        var matchlength = 0
         
-        while index < text.count{
-            
-            
-            
- 
-            
-            bufIndex = 0
-            dictIndex = 0
-                wBuf.append(text[index])
-            
-            
-            while bufIndex <= wBuf.count-1{
+        var answer = ""
+        var of = 0
+        var ma = 0
+        
+        var answr: [(_offset:Int, _matchlength:Int, Character)] = []
+        answr.append(( 0,  0, txt[0]))
+        answer.append(txt[0])
+        
+        
+        print(txt.count)
+        
+        while index < txt.count{
+            var bufIndex = startBuf
+            while bufIndex <= endBuf{
+                var dictIndex = 0
+                of = 0
+                ma = 0
                 
-                print("wBuf ",wBuf)
-                print("dict ",dictionary)
-                
-                matchlength = 0
-                         
-                while dictIndex < dictionary.count{
+                if startBuf == 33 {
                     
-                    if dictionary[dictIndex] == wBuf[bufIndex] && bufIndex <= wBuf.count-1{
-                        offset = index - (wBuf.count-1)
+                }
+                if dictEnd == dictSize{
+                    
+                }
+                while dictIndex < dictEnd{
+                    if txt[bufIndex] == txt[dictIndex] && bufIndex <= endBuf{
                         matchlength += 1
+                        offset = dictIndex - matchlength + 1
                         bufIndex += 1
                     }
-                    if bufIndex == wBuf.count || dictIndex == dictionary.count-1  { break }
-                    if matchlength > 0 && wBuf[bufIndex] != dictionary[dictIndex+1]{
-                        break
-                    }
-                    
+                    if bufIndex == endBuf+1 || dictIndex == dictEnd  { break }
+                    if matchlength > 0 && txt[bufIndex] != txt[dictIndex+1] {
+                        
+                        if ma < matchlength{
+                            of = offset
+                            ma = matchlength
 
+                        }
+//
+//
+                        matchlength = 0
+//
+                        bufIndex = startBuf
+//                        break
+                    }
                     dictIndex += 1
                 }
                 
-                if matchlength == 0{
-                    dictionary.append(wBuf[0])
-                    wBuf.remove(at: wBuf.startIndex)
-                    break
+                if ma>0{
+                    offset = of
+                    matchlength = ma
                 }
-
                 
-                if matchlength > 0 && wBuf.count >= 1 /* || bufIndex >= maxWBufCount*/{ // && и дальше мб лишнее
-                   
-                    var i = 0
-                    var j = offset
-                    var countOfReducedChr = offset+matchlength
+                
+//                print(matchlength)
+//                print(offset)
+                
+                
+                if matchlength == 0{
+//                    answer.append(txt[startBuf])
+                    answr.append(( 0,  0, txt[startBuf]))
+//                    print(answer)
+//                    print(txt.count)
                     
-                    while j < countOfReducedChr{
-                        text[j] = " "
-                        j += 1
+//                    if dictEnd < dictSize {
+//                        dictEnd += 1
+//                        startBuf += 1
+//                        if endBuf < txt.count{
+//                            endBuf += 1
+//                        }
+//                    } else {
+//                        txt.removeFirst()
+//                        dictEnd -= 1
+//                        startBuf -= 1
+//                        endBuf -= 1
+//                    }
+                    dictEnd += 1
+                    startBuf += 1
+                    if endBuf < txt.count{
+                        endBuf += 1
                     }
-                    text[offset] = "∑"
-//                    text[offset+1] = "¢"
-                    
-                    while i < bufIndex{
-                        dictionary.append(wBuf[0])
-                        wBuf.remove(at: wBuf.startIndex)
-                        i += 1
+                    if dictEnd > dictSize{
+                        txt.removeFirst()
+                        dictEnd -= 1
+                        startBuf -= 1
+                        endBuf -= 1
                     }
                     
-                    var m = 0
-                    
-                    while m < matchlength-1{
-//                        if index + m < text.endIndex{ // не кодирует последний символ сохраняет его в буфер
-                        if index + 1 < text.endIndex{ // не обязательный
-                            print("text ", text[index+1])
-                            wBuf.append(text[index+1])
-                            index += 1
-                        }
-                        
-                        m += 1
+                    if endBuf > txt.count-1{
+                        endBuf = txt.count-1
                     }
+//                    print(txt.count)
+                    
+                    
+//                    dictEnd += 1
+//                    startBuf += 1
+//                    if endBuf <= txt.count-1{
+//                        endBuf += 1
+//                    }
                     break
                 }
-            }
-            index += 1
-        }
+                
+                if matchlength > 0{
+                    
+                    var d = 0
+                    while d <= dictEnd {
+                        print("Dict:", txt[d], d)
+                        d += 1
+                    }
+                    
+//                    answer.append("\(offset)")
+//                    answer.append("\(matchlength)")
+//                    answer.append(txt[startBuf+matchlength+1])
+//
+//                    if startBuf + matchlength < txt.count {
+                    if startBuf + matchlength < txt.count-1{
+                        answr.append(( offset, matchlength ,txt[startBuf+matchlength]))
+                        print(txt[startBuf])
+                        print(offset,matchlength)
+                        print(txt[startBuf+matchlength])
+                    } else {
+                        answr.append(( offset, matchlength ," "))
+                        print(txt[startBuf])
+                        print(offset,matchlength)
+                    }
+                        
 
-        matchlength = 0
-        bufIndex = 0
-        index -= wBuf.count
-        print(text.endIndex)
-        print(index)
+//                    } else {
+////                        answr.append(( offset, matchlength ,txt.last!))
+//                        print(txt[startBuf])
+//                        print(offset,matchlength)
+//                        print(txt.last)
+//                    }
+//
+                    endBuf += matchlength + 1
+                    if endBuf > txt.count-1{
+                        endBuf = txt.count-1
+                    }
+                    startBuf += matchlength + 1
+                    
+                    dictEnd = startBuf - 1
+                    
+                    while dictEnd > dictSize && !txt.isEmpty{
+                        txt.removeFirst()
+                        startBuf -= 1
+                        endBuf -= 1
+                        dictEnd -= 1
+                        index -= 1
+                    }
+                    
+                    matchlength = 0
+                    ma = 0
 
-        
-        
-        while wBuf.count > 0{
-                matchlength = 0
-            
-            dictIndex = 0
-
-        while dictIndex < dictionary.count{
-
-            if dictionary[dictIndex] == wBuf[bufIndex] && bufIndex <= wBuf.count-1{
-                offset = index// - (wBuf.count-1)
-                matchlength += 1
+//                    index = startBuf // ???????
+                    break
+                }
+                
                 bufIndex += 1
             }
-            if bufIndex == wBuf.count || dictIndex == dictionary.count-1 { break }
-            if matchlength > 0 && wBuf[bufIndex] != dictionary[dictIndex+1]{
-                break
-            }
-
-
-            dictIndex += 1
-        }
-
-        if matchlength == 0{
-            dictionary.append(wBuf[0])
-            wBuf.remove(at: wBuf.startIndex)
-            bufIndex = 0
             index += 1
         }
-
-
-            if matchlength > 0 && wBuf.count >= 1 /* || bufIndex >= maxWBufCount*/{ // && и дальше мб лишнее
-
-            var i = 0
-            var j = offset
-            let countOfReducedChr = offset+matchlength
-
-            while j < countOfReducedChr{
-                text[j] = " "
-                j += 1
-            }
-            text[offset] = "∑"
-            print("offset", offset)
-//                    text[offset+1] = "¢"
-
-            while i < bufIndex{
-                dictionary.append(wBuf[0])
-                wBuf.remove(at: wBuf.startIndex)
-                i += 1
-            }
-            index += i
-            bufIndex = 0
-        }
-        }
         
+//        print(answer)
+        print(answr)
         
-        
-        
-        print("dct",dictionary)
-        print("buf",wBuf)
-        print(text.endIndex)
-        
-        return convert.toString(text: text)
+        return text
     }
     
-    func decompress(txt: String) -> String{
 
-        var text = convert.toCharacter(text: txt)
-        var answer = ""
-        
-        for chr in 0...text.count-1{
-            
-        }
-        
-        
-        return ""
-    }
-    
+
 }
