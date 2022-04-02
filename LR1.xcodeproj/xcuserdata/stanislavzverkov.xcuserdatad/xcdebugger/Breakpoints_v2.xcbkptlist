@@ -14,8 +14,8 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "compress(text:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "LR1/CompressMethods/LZSS.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "compress(text:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "LR1/CompressMethods/LZSS.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "compress(text:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -63,9 +63,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "89">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -79,9 +77,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "94">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -95,9 +91,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "95">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -111,9 +105,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "150">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -127,9 +119,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "184">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -143,9 +133,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
-            endingLineNumber = "225"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "225">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -159,9 +147,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "152">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -175,9 +161,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "188">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -191,9 +175,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "228">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -207,9 +189,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "151">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -223,9 +203,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "138">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -239,9 +217,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "139">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -255,9 +231,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "229">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -271,9 +245,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "160">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -287,9 +259,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "161">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -303,9 +273,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "186">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -319,9 +287,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "145">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -335,9 +301,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
+            endingLineNumber = "148">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -350,8 +314,8 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "decompress(text:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -360,6 +324,38 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "01857E5C-D9A9-4493-AB05-DF903B269B43"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LR1/CompressMethods/LZ77.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "compress(text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8788B46E-0DDD-4D05-9711-6AF436EBA343"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LR1/CompressMethods/LZ77.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "compress(text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A264146-B4AF-43CD-80A9-A8F2CE9EBB71"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -375,31 +371,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8788B46E-0DDD-4D05-9711-6AF436EBA343"
+            uuid = "B6A9B9B3-FC52-4093-909F-288259DE833F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LR1/CompressMethods/LZ77.swift"
+            filePath = "LR1/CompressMethods/LZSS.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "compress(text:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0A264146-B4AF-43CD-80A9-A8F2CE9EBB71"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LR1/CompressMethods/LZ77.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "compress(text:)"
             landmarkType = "7">
          </BreakpointContent>

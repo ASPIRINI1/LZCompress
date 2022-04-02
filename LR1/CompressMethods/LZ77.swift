@@ -11,6 +11,8 @@ class LZ77{
     
     let convert = Convert()
     
+ 
+    
     func compress(text: String) -> String{
         
         var txt = convert.toCharacter(text: text)
@@ -87,21 +89,22 @@ class LZ77{
                 
                 if matchlength == 0{
                     answr.append(( 0,  0, "\(txt[startBuf])"))
-                    dictEnd += 1
-                    startBuf += 1
-                    if endBuf < txt.count{
-                        endBuf += 1
-                    }
-                    if dictEnd > dictSize{
-                        txt.removeFirst()
-                        dictEnd -= 1
-                        startBuf -= 1
-                        endBuf -= 1
-                    }
-                    
-                    if endBuf > txt.count-1{
-                        endBuf = txt.count-1
-                    }
+//                    dictEnd += 1
+//                    startBuf += 1
+//                    if endBuf < txt.count{
+//                        endBuf += 1
+//                    }
+//                    if dictEnd > dictSize{
+//                        txt.removeFirst()
+//                        dictEnd -= 1
+//                        startBuf -= 1
+//                        endBuf -= 1
+//                    }
+//
+//                    if endBuf > txt.count-1{
+//                        endBuf = txt.count-1
+//                    }
+                    move(matchlength: matchlength)
                     break
                 }
                 
@@ -123,21 +126,23 @@ class LZ77{
                         print(offset,matchlength)
                     }
                         
-                    endBuf += matchlength + 1
-                    if endBuf > txt.count-1{
-                        endBuf = txt.count-1
-                    }
-                    startBuf += matchlength + 1
+//                    endBuf += matchlength + 1
+//                    if endBuf > txt.count-1{
+//                        endBuf = txt.count-1
+//                    }
+//                    startBuf += matchlength + 1
+//
+//                    dictEnd = startBuf - 1
+//
+//                    while dictEnd > dictSize && !txt.isEmpty{
+//                        txt.removeFirst()
+//                        startBuf -= 1
+//                        endBuf -= 1
+//                        dictEnd -= 1
+//                        index -= 1
+//                    }
                     
-                    dictEnd = startBuf - 1
-                    
-                    while dictEnd > dictSize && !txt.isEmpty{
-                        txt.removeFirst()
-                        startBuf -= 1
-                        endBuf -= 1
-                        dictEnd -= 1
-                        index -= 1
-                    }
+                    move(matchlength: matchlength)
                     
                     matchlength = 0
                     ma = 0
@@ -159,6 +164,26 @@ class LZ77{
         }
         
         print(answer)
+        
+        
+        
+        func move(matchlength: Int){
+            endBuf += matchlength + 1
+            if endBuf > txt.count-1{
+                endBuf = txt.count-1
+            }
+            startBuf += matchlength + 1
+            
+            dictEnd = startBuf - 1
+            
+            while dictEnd > dictSize && !txt.isEmpty{
+                txt.removeFirst()
+                startBuf -= 1
+                endBuf -= 1
+                dictEnd -= 1
+                index -= 1
+            }
+        }
         
         return answer
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DE08D53C27F0D1CC00F1E012 /* LZ77.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE08D53B27F0D1CC00F1E012 /* LZ77.swift */; };
+		DE78F37727F7D637008569BF /* LZSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE78F37627F7D637008569BF /* LZSS.swift */; };
 		DE8397DB27EDF0E60064E2DF /* LZ78.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8397DA27EDF0E60064E2DF /* LZ78.swift */; };
 		DE8397DD27EDF2550064E2DF /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8397DC27EDF2550064E2DF /* Convert.swift */; };
 		DEABB9A427DEB56F00C8A053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEABB9A327DEB56F00C8A053 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		DE08D53B27F0D1CC00F1E012 /* LZ77.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LZ77.swift; sourceTree = "<group>"; };
+		DE78F37627F7D637008569BF /* LZSS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LZSS.swift; sourceTree = "<group>"; };
 		DE8397DA27EDF0E60064E2DF /* LZ78.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LZ78.swift; sourceTree = "<group>"; };
 		DE8397DC27EDF2550064E2DF /* Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
 		DEABB9A027DEB56F00C8A053 /* LR1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LR1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +79,7 @@
 				DEE68ACF27ECF65B00BA6A55 /* LZ77old.swift */,
 				DE08D53B27F0D1CC00F1E012 /* LZ77.swift */,
 				DE8397DA27EDF0E60064E2DF /* LZ78.swift */,
+				DE78F37627F7D637008569BF /* LZSS.swift */,
 			);
 			path = CompressMethods;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				DE08D53C27F0D1CC00F1E012 /* LZ77.swift in Sources */,
 				DEABB9A627DEB56F00C8A053 /* ViewController.swift in Sources */,
 				DE8397DD27EDF2550064E2DF /* Convert.swift in Sources */,
+				DE78F37727F7D637008569BF /* LZSS.swift in Sources */,
 				DE8397DB27EDF0E60064E2DF /* LZ78.swift in Sources */,
 				DEABB9A427DEB56F00C8A053 /* AppDelegate.swift in Sources */,
 			);
