@@ -167,6 +167,53 @@ class LZ77{
         
         
         
+        
+//        func findMatching() -> (offset:Int, match:Int) {
+//            var bufIndex = startBuf
+//            while bufIndex <= endBuf{
+//                var dictIndex = 0
+//                of = 0
+//                ma = 0
+//
+//                if startBuf == 33 {
+//
+//                }
+//                if dictEnd == dictSize{
+//
+//                }
+//                while dictIndex < dictEnd{
+//                    if txt[bufIndex] == txt[dictIndex] && bufIndex <= endBuf{
+//                        matchlength += 1
+////                        offset = dictIndex - matchlength + 1
+//                        offset = dictEnd - (dictIndex - matchlength)-1
+//                        bufIndex += 1
+//                    }
+//                    if bufIndex == endBuf+1 || dictIndex == dictEnd  { break }
+//                    if matchlength > 0 && txt[bufIndex] != txt[dictIndex+1] {
+//
+//                        if ma < matchlength{
+//                            of = offset
+//                            ma = matchlength
+//
+//                        }
+//
+//                        matchlength = 0
+//
+//                        bufIndex = startBuf
+//                    }
+//                    dictIndex += 1
+//                }
+//
+//                if ma>0{
+//                    offset = of
+//                    matchlength = ma
+//                }
+//                bufIndex += 1
+//        }
+//            return (offset,matchlength)
+//    }
+        
+        
         func move(matchlength: Int){
             endBuf += matchlength + 1
             if endBuf > txt.count-1{
