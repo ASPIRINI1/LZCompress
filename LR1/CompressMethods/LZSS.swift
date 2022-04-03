@@ -13,38 +13,59 @@ class LZSS {
     
     func compress(text: String) -> String{
         
-        var txt = convert.toCharacter(text: text)
+        let txt = convert.toCharacter(text: text)
         
         var table: [(Bool,Int?,Int?,String?)] = []
-        
-        var dictionary: [String:Int] = [:]
-        
-        var buf: [String:Int]
+        var dictionary = ""
         var offset = 0
-        var matchlength = 0
         
         
         var match = ""
-        for index in 0...txt.count-1 {
+        
+        var index = 0
+        
+        while index < txt.count {
             
- 
             
-            if dictionary.keys.contains(match + "\(txt[index])") {
+            if dictionary.contains(match + "\(txt[index])") && match.count < 7 {
                 match.append(txt[index])
             } else {
-                if match.count <= 1 {
-                    table.append((false, 0, 0, "\(txt[index])"))
-                } else {
-                    table.append((true, index, match.count, match + "\(txt[index])"))
+                if match.count == 0 {
+                    table.append((false, nil, nil, "\(txt[index])"))
+                    dictionary.append("\(txt[index])")
+                    match = ""
                 }
-                dictionary[match + "\(txt[index])"] = index
+                if match.count == 1 {
+                    table.append((false, nil, nil, match))
+//                    table.append((false,0,0,"\(txt[index])"))
+                    dictionary.append("\(match)")// + "\(txt[index])")
+                    print(match)
+                    match = ""
+//                    index -= 1
+                    continue
+                }
+                if match.count > 1 {
+                    
+                    let range = String(dictionary.reversed()).range(of: String(match.reversed()))
+                    offset = String(dictionary.reversed()).distance(from: String(dictionary.reversed()).startIndex, to: range!.upperBound)
+                    
+                    table.append((true, offset , match.count, nil))
+                    print(match)// + "\(txt[index])")
+                    dictionary.append(match)
+                    match = ""
+//                    index -= 1
+                    continue
+                }
+    
                 
-                match = ""
             }
-            
+            index += 1
         }
         
-        print(table)
+//        print(table, separator: "\n")
+        for t in table {
+            print(t)
+        }
         print("dict")
         print(dictionary)
         
