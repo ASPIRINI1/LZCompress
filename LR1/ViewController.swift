@@ -64,7 +64,7 @@ class ViewController: NSViewController {
 //        print(lz77.decompress(text: lz77.compress(text: fileData)))
         
         textLabel.stringValue = lzss.compress(text: fileData)
-        
+        lzss.decompress(text: lzss.compress(text: fileData))
         
     }
     

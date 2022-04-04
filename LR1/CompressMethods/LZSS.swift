@@ -39,7 +39,7 @@ class LZSS {
                     table.append((false, nil, nil, match))
 //                    table.append((false,0,0,"\(txt[index])"))
                     dictionary.append("\(match)")// + "\(txt[index])")
-                    print(match)
+//                    print(match)
                     match = ""
 //                    index -= 1
                     continue
@@ -50,7 +50,7 @@ class LZSS {
                     offset = String(dictionary.reversed()).distance(from: String(dictionary.reversed()).startIndex, to: range!.upperBound)
                     
                     table.append((true, offset , match.count, nil))
-                    print(match)// + "\(txt[index])")
+//                    print(match)// + "\(txt[index])")
                     dictionary.append(match)
                     match = ""
 //                    index -= 1
@@ -63,13 +63,86 @@ class LZSS {
         }
         
 //        print(table, separator: "\n")
-        for t in table {
-            print(t)
+        
+//        for t in table {
+//            print(t)
+//        }
+//        print("dict")
+//        print(dictionary)
+        
+        var answer = ""
+        
+        for item in table {
+            if item.0{
+                answer.append("1")
+            } else {
+                answer.append("0")
+            }
+            if (item.1 != nil){
+                answer.append("\(item.1!)" + " ")
+            } else {
+                answer.append("")
+            }
+            if (item.2 != nil){
+                answer.append("\(item.2!)" + " ")
+            } else {
+                answer.append("")
+            }
+            answer.append(item.3 ?? "")
         }
-        print("dict")
-        print(dictionary)
+        
+        print(answer)
+        return answer
+    }
+    
+    func decompress(text: String) -> String{
+        
+        let txt = convert.toCharacter(text: text)
+        
+        var answer: [Character] = []
+        var offset = 0
+
+        var index = 0
+        while index < txt.count {
+            var buf = ""
+            if txt[index] == "0" {
+                index += 1
+                answer.append(txt[index])
+            } else {
+                var match = 0
+                index += 1
+                while txt[index].isNumber{
+                    buf.append("\(txt[index])")
+                    index += 1
+                }
+//                if txt[index] == " " { //??
+                    offset = Int(buf)!
+                    index += 1
+                    buf = ""
+//                }
+                while txt[index].isNumber{
+                    buf.append(txt[index])
+                    index += 1
+                }
+                match = Int(buf) ?? 0
+
+                for _ in 1...match {
+                    answer.append(answer[(answer.endIndex-offset)])
+                }
+
+            }
+
+            index += 1
+        }
         
         
-        return ""
+        
+        for answer in answer {
+            print(answer, terminator: "")
+        }
+
+        
+        
+        return convert.toString(text: answer)
     }
 }
