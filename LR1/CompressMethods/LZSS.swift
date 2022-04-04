@@ -17,8 +17,10 @@ class LZSS {
         
         var table: [(Bool,Int?,Int?,String?)] = []
         var dictionary = ""
-        var offset = 0
         
+        var answer = ""
+        
+//        var offset = 0
         
         var match = ""
         
@@ -30,47 +32,77 @@ class LZSS {
             if dictionary.contains(match + "\(txt[index])") && match.count < 7 {
                 match.append(txt[index])
             } else {
-                if match.count == 0 {
-                    table.append((false, nil, nil, "\(txt[index])"))
-                    dictionary.append("\(txt[index])")
-                    match = ""
-                }
-                if match.count == 1 {
-                    table.append((false, nil, nil, match))
-//                    table.append((false,0,0,"\(txt[index])"))
-                    dictionary.append("\(match)")// + "\(txt[index])")
-//                    print(match)
-                    match = ""
-//                    index -= 1
-                    continue
-                }
-                if match.count > 1 {
-                    
-                    let range = String(dictionary.reversed()).range(of: String(match.reversed()))
-                    offset = String(dictionary.reversed()).distance(from: String(dictionary.reversed()).startIndex, to: range!.upperBound)
-                    
-                    table.append((true, offset , match.count, nil))
-//                    print(match)// + "\(txt[index])")
-                    dictionary.append(match)
-                    match = ""
-//                    index -= 1
-                    continue
-                }
-    
+//                if match.count == 0 {
+//                    table.append((false, nil, nil, "\(txt[index])"))
+//                    dictionary.append("\(txt[index])")
+//                    match = ""
+//                }
+//                if match.count == 1 {
+//                    table.append((false, nil, nil, match))
+////                    table.append((false,0,0,"\(txt[index])"))
+//                    dictionary.append("\(match)")// + "\(txt[index])")
+////                    print(match)
+//                    match = ""
+////                    index -= 1
+//                    continue
+//                }
+//                if match.count > 1 {
+//
+//                    let range = String(dictionary.reversed()).range(of: String(match.reversed()))
+//                    let offset = String(dictionary.reversed()).distance(from: String(dictionary.reversed()).startIndex, to: range!.upperBound)
+//
+//                    table.append((true, offset , match.count, nil))
+////                    print(match)// + "\(txt[index])")
+//                    dictionary.append(match)
+//                    match = ""
+////                    index -= 1
+//                    continue
+//                }
+                addToTable(matchlength: match)
+                match = ""
+                
+
                 
             }
             index += 1
         }
         
-//        print(table, separator: "\n")
+        if !match.isEmpty {
+            addToTable(matchlength: match)
+        }
+
         
-//        for t in table {
-//            print(t)
-//        }
-//        print("dict")
-//        print(dictionary)
+        func addToTable(matchlength: String){
+            var matchh = matchlength
+            
+            if matchh.count == 0 {
+                table.append((false, nil, nil, "\(txt[index])"))
+                dictionary.append("\(txt[index])")
+                matchh = ""
+            }
+            if matchh.count == 1 {
+                table.append((false, nil, nil, matchh))
+//                    table.append((false,0,0,"\(txt[index])"))
+                dictionary.append("\(matchh)")// + "\(txt[index])")
+//                    print(match)
+                matchh = ""
+                    index -= 1
+//                return
+            }
+            if matchh.count > 1 {
+
+                let range = String(dictionary.reversed()).range(of: String(matchh.reversed()))
+                let offset = String(dictionary.reversed()).distance(from: String(dictionary.reversed()).startIndex, to: range!.upperBound)
+
+                table.append((true, offset , matchh.count, nil))
+//                    print(match)// + "\(txt[index])")
+                dictionary.append(matchh)
+                match = ""
+                    index -= 1
+//                return
+            }
+        }
         
-        var answer = ""
         
         for item in table {
             if item.0{
@@ -91,7 +123,7 @@ class LZSS {
             answer.append(item.3 ?? "")
         }
         
-        print(answer)
+//        print(answer)
         return answer
     }
     
@@ -136,10 +168,10 @@ class LZSS {
         }
         
         
-        
-        for answer in answer {
-            print(answer, terminator: "")
-        }
+//
+//        for answer in answer {
+//            print(answer, terminator: "")
+//        }
 
         
         
