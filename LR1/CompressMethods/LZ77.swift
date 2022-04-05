@@ -43,7 +43,7 @@ class LZ77{
         answer.append(txt[0])
         
         
-        print(txt.count)
+//        print(txt.count)
         
         while index < txt.count{
             var bufIndex = startBuf
@@ -52,23 +52,24 @@ class LZ77{
                 of = 0
                 ma = 0
                 
-                if startBuf == 33 {
-                    
-                }
-                if dictEnd == dictSize{
-                    
-                }
-                while dictIndex < dictEnd{
+//                if startBuf == 33 {
+//
+//                }
+//                if dictEnd == dictSize{
+//
+//                }
+                while dictIndex <= dictEnd{
+//                while dictIndex >= 0 {
                     if txt[bufIndex] == txt[dictIndex] && bufIndex <= endBuf{
                         matchlength += 1
 //                        offset = dictIndex - matchlength + 1
                         offset = dictEnd - (dictIndex - matchlength)-1
                         bufIndex += 1
                     }
-                    if bufIndex == endBuf+1 || dictIndex == dictEnd  { break }
-                    if matchlength > 0 && txt[bufIndex] != txt[dictIndex+1] {
+                    if bufIndex == endBuf+1 || dictIndex == dictEnd+1  { break }
+                    if matchlength > 0 && txt[bufIndex] != txt[dictIndex+1] || matchlength > 0 && dictIndex == dictEnd{
                         
-                        if ma < matchlength{
+                        if ma < matchlength || of > offset && ma <= matchlength{
                             of = offset
                             ma = matchlength
 
@@ -81,6 +82,52 @@ class LZ77{
                     dictIndex += 1
                 }
                 
+                /*var dictIndex = dictEnd
+                
+                while dictIndex >= 0 {
+                    if txt[bufIndex] == txt[dictIndex] && bufIndex <= endBuf{
+                        matchlength += 1
+//                        offset = dictIndex - matchlength + 1
+                        offset = dictEnd - (dictIndex - matchlength)-1
+                        bufIndex += 1
+                        dictIndex += 1
+                        continue
+                    } else {
+                        if matchlength > ma{
+                            ma = matchlength
+                            of = offset
+                            bufIndex = 0
+                            matchlength = 0
+                            dictIndex -= matchlength
+                        }
+                        dictIndex -= 1
+                        
+                    }
+                    
+
+                    
+                    
+//                    if bufIndex == endBuf+1 || dictIndex == dictEnd  { break }
+//                    if matchlength > 0 && txt[bufIndex] != txt[dictIndex+1] {
+//
+//                        if ma < matchlength || of < offset{
+//                            of = offset
+//                            ma = matchlength
+//
+//                        }
+//
+//                        matchlength = 0
+//
+//                        bufIndex = startBuf
+//                    } else {
+//                        dictIndex += 2
+//                    }
+//                    dictIndex -= 1
+                }*/
+                
+                
+                
+                
                 if ma>0{
                     offset = of
                     matchlength = ma
@@ -88,6 +135,7 @@ class LZ77{
                 
                 
                 if matchlength == 0{
+                    
                     answr.append(( 0,  0, "\(txt[startBuf])"))
 //                    dictEnd += 1
 //                    startBuf += 1
@@ -117,15 +165,15 @@ class LZ77{
 //                    }
                     if startBuf + matchlength < txt.count-1{
                         answr.append(( offset, matchlength ,"\(txt[startBuf+matchlength])"))
-                        print(txt[startBuf])
-                        print(offset,matchlength)
-                        print(txt[startBuf+matchlength])
+//                        print(txt[startBuf])
+//                        print(offset,matchlength)
+//                        print(txt[startBuf+matchlength])
                     } else {
                         answr.append(( offset, matchlength , ""))
-                        print(txt[startBuf])
-                        print(offset,matchlength)
+//                        print(txt[startBuf])
+//                        print(offset,matchlength)
                     }
-                        
+//                    print(answr)
 //                    endBuf += matchlength + 1
 //                    if endBuf > txt.count-1{
 //                        endBuf = txt.count-1
@@ -155,7 +203,7 @@ class LZ77{
             index += 1
         }
         
-        print(answr)
+//        print(answr)
         
         answer.removeAll()
         
@@ -163,7 +211,7 @@ class LZ77{
             answer.append("\(tuple._offset)" + " " + "\(tuple._matchlength)" + "\(tuple.2)")
         }
         
-        print(answer)
+//        print(answer)
         
         
         
@@ -215,6 +263,7 @@ class LZ77{
         
         
         func move(matchlength: Int){
+            
             endBuf += matchlength + 1
             if endBuf > txt.count-1{
                 endBuf = txt.count-1
@@ -231,7 +280,8 @@ class LZ77{
                 index -= 1
             }
         }
-        
+        print(answr)
+        print(answer)
         return answer
     }
     
@@ -244,25 +294,42 @@ class LZ77{
         var num = ""
         
         // answer table fill
-        for chr in convert.toCharacter(text: text){
-            if chr.isNumber{
-                num.append(chr)
-                continue
+//        for chr in convert.toCharacter(text: text){
+        var i = 0
+        var txt = convert.toCharacter(text: text)
+        while i < txt.count{
+            while txt[i].isNumber{
+                num.append(txt[i])
+                i += 1
             }
-            if chr == " "{
+//            if txt[i] == " "{
                 table.append((Int(num)!, -1, nil))
                 num = ""
-                continue
+                i += 1
+//                continue
+//            }
+            while txt[i].isNumber {
+                num.append(txt[i])
+                i += 1
+                
+                if i == txt.count{
+                    i -= 1
+                    break
+                }
             }
-            if !chr.isNumber{
-                table[table.endIndex-1].1 = Int(num)!
-                table[table.endIndex-1].2 = chr
+            
+            if !txt[i].isNumber || i == txt.count-1 {
+                table[table.endIndex-1].matchlength = Int(num)!
+                if i < txt.count-1{
+                    table[table.endIndex-1].2 = txt[i]
+                }
                 num = ""
             }
+            i += 1
         }
         
         
-        print(table)
+//        print(table)
         
         var ans: [Character] = []
         
@@ -273,7 +340,10 @@ class LZ77{
                     ans.append(ans[start + i])
                 }
             }
-            ans.append(el.2 ?? Character("."))
+            if let el = el.2 {
+                ans.append(el)
+            }
+            
         }
         for ch in ans {
             answer.append(ch)

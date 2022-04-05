@@ -63,9 +63,18 @@ class ViewController: NSViewController {
 //        textLabel.stringValue = lz77.compress(text: fileData)
 //        print(lz77.decompress(text: lz77.compress(text: fileData)))
         
-        textLabel.stringValue = lzss.compress(text: fileData)
-        lzss.decompress(text: lzss.compress(text: fileData))
+//        textLabel.stringValue = lzss.compress(text: fileData)
+//        lzss.decompress(text: lzss.compress(text: fileData))
         
+        print("LZ77")
+        print(lz77.compress(text: fileData))
+        print(lz77.decompress(text: lz77.compress(text: fileData)))
+        print("LZ78")
+        print(lz78.compress(txt: fileData))
+        print(lz78.decompress(txt: lz78.compress(txt: fileData)))
+        print("LZSS")
+        print(lzss.compress(text: fileData))
+        print(lzss.decompress(text: lzss.compress(text: fileData)))
     }
     
     @IBAction func decompressAction(_ sender: Any) {

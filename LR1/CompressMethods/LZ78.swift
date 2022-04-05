@@ -17,6 +17,8 @@ class LZ78{
         case perfomance
     }
     
+    let dictionarySize = 0
+    
     func compress(txt: String) -> String{
         
         let text = convert.toCharacter(text: txt)
@@ -36,7 +38,7 @@ class LZ78{
         }
         if !bufer.isEmpty {
             let lastCh = bufer.last
-            bufer.remove(at: bufer.endIndex)
+            bufer.removeLast()
             answer.append((dictionary[bufer]!, lastCh!))
         }
         
@@ -54,8 +56,6 @@ class LZ78{
             answer += "\(word)"
             dictionary.append(word)
         }
-        
-        print(answer)
         
         return answer
     }
