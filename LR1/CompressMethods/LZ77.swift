@@ -320,7 +320,7 @@ class LZ77{
             
             if !txt[i].isNumber || i == txt.count-1 {
                 table[table.endIndex-1].matchlength = Int(num)!
-                if i < txt.count-1{
+                if i < txt.count && !txt[i].isNumber{
                     table[table.endIndex-1].2 = txt[i]
                 }
                 num = ""
