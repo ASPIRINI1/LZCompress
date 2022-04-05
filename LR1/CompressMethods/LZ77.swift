@@ -11,6 +11,11 @@ class LZ77{
     
     let convert = Convert()
     
+    enum compressDegree {
+        case speed
+        case mid
+        case perfomance
+    }
  
     
     func compress(text: String) -> String{
@@ -21,14 +26,12 @@ class LZ77{
 //        MARK: - fd
         
         let bufSize = 7
+        let dictSize = 31
         
         var startBuf = 1
         var endBuf = bufSize + 1
         
         var index = endBuf
-        
-        let dictSize = 31
-        
         var dictEnd = 0
         
         var offset = 0
@@ -61,11 +64,9 @@ class LZ77{
                         if ma < matchlength || of > offset && ma <= matchlength{
                             of = offset
                             ma = matchlength
-
                         }
 
                         matchlength = 0
-
                         bufIndex = startBuf
                     }
                     dictIndex += 1
@@ -81,6 +82,7 @@ class LZ77{
                     
                     answr.append(( 0,  0, "\(txt[startBuf])"))
                     move(matchlength: matchlength)
+                    
                     break
                 }
                 
@@ -136,7 +138,6 @@ class LZ77{
     
     func decompress(text: String) -> String{
         
-        var answer = ""
         var table: [(offset:Int, matchlength:Int, Character?)] = []
         
         var num = ""
@@ -189,13 +190,10 @@ class LZ77{
             if let el = el.2 {
                 ans.append(el)
             }
-            
         }
-        for ch in ans {
-            answer.append(ch)
-        }
+
         
-        return answer
+        return convert.toString(text: ans)
     }
     
     
