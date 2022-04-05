@@ -17,52 +17,19 @@ class LZSS {
         
         var table: [(Bool,Int?,Int?,String?)] = []
         var dictionary = ""
-        
         var answer = ""
-        
-//        var offset = 0
-        
         var match = ""
-        
         var index = 0
         
         while index < txt.count {
             
-            
             if dictionary.contains(match + "\(txt[index])") && match.count < 7 {
                 match.append(txt[index])
+                
             } else {
-//                if match.count == 0 {
-//                    table.append((false, nil, nil, "\(txt[index])"))
-//                    dictionary.append("\(txt[index])")
-//                    match = ""
-//                }
-//                if match.count == 1 {
-//                    table.append((false, nil, nil, match))
-////                    table.append((false,0,0,"\(txt[index])"))
-//                    dictionary.append("\(match)")// + "\(txt[index])")
-////                    print(match)
-//                    match = ""
-////                    index -= 1
-//                    continue
-//                }
-//                if match.count > 1 {
-//
-//                    let range = String(dictionary.reversed()).range(of: String(match.reversed()))
-//                    let offset = String(dictionary.reversed()).distance(from: String(dictionary.reversed()).startIndex, to: range!.upperBound)
-//
-//                    table.append((true, offset , match.count, nil))
-////                    print(match)// + "\(txt[index])")
-//                    dictionary.append(match)
-//                    match = ""
-////                    index -= 1
-//                    continue
-//                }
+                
                 addToTable(matchlength: match)
                 match = ""
-                
-
-                
             }
             index += 1
         }
@@ -73,21 +40,19 @@ class LZSS {
 
         
         func addToTable(matchlength: String){
+            
             var matchh = matchlength
             
             if matchh.count == 0 {
                 table.append((false, nil, nil, "\(txt[index])"))
                 dictionary.append("\(txt[index])")
-                matchh = ""
+//                matchh = ""
             }
             if matchh.count == 1 {
                 table.append((false, nil, nil, matchh))
-//                    table.append((false,0,0,"\(txt[index])"))
-                dictionary.append("\(matchh)")// + "\(txt[index])")
-//                    print(match)
-                matchh = ""
-                    index -= 1
-//                return
+                dictionary.append("\(matchh)")
+//                matchh = ""
+                index -= 1
             }
             if matchh.count > 1 {
 
@@ -95,11 +60,9 @@ class LZSS {
                 let offset = String(dictionary.reversed()).distance(from: String(dictionary.reversed()).startIndex, to: range!.upperBound)
 
                 table.append((true, offset , matchh.count, nil))
-//                    print(match)// + "\(txt[index])")
                 dictionary.append(matchh)
-                match = ""
-                    index -= 1
-//                return
+//                matchh = ""
+                index -= 1
             }
         }
         
@@ -132,16 +95,22 @@ class LZSS {
         let txt = convert.toCharacter(text: text)
         
         var answer: [Character] = []
-        var offset = 0
+      
 
         var index = 0
         while index < txt.count {
+            
             var buf = ""
+            
             if txt[index] == "0" {
                 index += 1
                 answer.append(txt[index])
+                
             } else {
+                
                 var match = 0
+                var offset = 0
+                
                 index += 1
                 while txt[index].isNumber{
                     buf.append("\(txt[index])")
@@ -152,7 +121,7 @@ class LZSS {
                     index += 1
                     buf = ""
 //                }
-                while txt[index].isNumber{
+                while txt[index].isNumber{ //??????
                     buf.append(txt[index])
                     index += 1
                 }
@@ -167,14 +136,6 @@ class LZSS {
             index += 1
         }
         
-        
-//
-//        for answer in answer {
-//            print(answer, terminator: "")
-//        }
-
-        
-        
-        return convert.toString(text: answer)
+        return String(answer)
     }
 }
