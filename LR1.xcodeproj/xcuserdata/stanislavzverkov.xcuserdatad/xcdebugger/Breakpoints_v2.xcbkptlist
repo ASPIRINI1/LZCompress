@@ -14,9 +14,9 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "compress(text:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "compress(text:compressDegree:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -114,9 +114,9 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "compress(text:)"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "compress(text:compressDegree:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -130,9 +130,9 @@
             filePath = "LR1/CompressMethods/LZSS.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "compress(text:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "compress(text:compressDegree:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -146,9 +146,9 @@
             filePath = "LR1/CompressMethods/LZSS.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "compress(text:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "compress(text:compressDegree:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -162,9 +162,9 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "compress(text:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "compress(text:compressDegree:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -178,9 +178,9 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "compress(text:)"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "compress(text:compressDegree:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -194,9 +194,9 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "compress(text:)"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "compress(text:compressDegree:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -210,8 +210,8 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "move(matchlength:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -226,9 +226,9 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "compress(text:)"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "compress(text:compressDegree:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -242,9 +242,9 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "compress(text:)"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "compress(text:compressDegree:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -258,9 +258,57 @@
             filePath = "LR1/CompressMethods/LZ77.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "decompress(text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "64F7E405-87E3-4573-B606-F2D4572F6AF1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LR1/CompressMethods/LZ78.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "decompress(txt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4777016-DCB0-4357-9671-5F2110457FD6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LR1/CompressMethods/LZ78.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "compress(txt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50CB2332-F58D-4FDC-8D57-5629634C6E78"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LR1/CompressMethods/LZ78.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "compress(txt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

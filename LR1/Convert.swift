@@ -21,16 +21,6 @@ class Convert{
         return txt
     }
     
-    func toString(text: [Character]) -> String {
-        
-        var txt = ""
-        
-        for character in text {
-            txt.append(character)
-        }
-        
-        return txt
-    }
     
     func toString(dictionary: [(Int, Character)]) -> String{
         
@@ -41,10 +31,6 @@ class Convert{
         
         return string
     }
-//    
-//    func toCharacter(text: Dictionary){
-//        
-//    }
     
     func toDictionary(text: String) -> [(Int, Character)]{
         

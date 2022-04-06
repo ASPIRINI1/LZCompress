@@ -11,13 +11,6 @@ class LZ78{
     
     private let convert = Convert()
     
-    enum compressDegree {
-        case speed
-        case mid
-        case perfomance
-    }
-    
-    let dictionarySize = 0
     
     func compress(txt: String) -> String{
         

@@ -10,23 +10,19 @@ import Foundation
 class LZ77{
     
     let convert = Convert()
-    
-    enum compressDegree {
-        case speed
-        case mid
-        case perfomance
-    }
+    let compDegree = CompressDegree()
+
  
     
-    func compress(text: String) -> String{
+    func compress(text: String, compressDegree: CompressDegree.compressDegree) -> String{
         
         var txt = convert.toCharacter(text: text)
         
         
 //        MARK: - fd
         
-        let bufSize = 7
-        let dictSize = 31
+        let bufSize = compDegree.getCompressDegree(compressDegree: compressDegree).0
+        let dictSize = compDegree.getCompressDegree(compressDegree: compressDegree).1
         
         var startBuf = 1
         var endBuf = bufSize + 1
@@ -193,7 +189,7 @@ class LZ77{
         }
 
         
-        return convert.toString(text: ans)
+        return String(ans)
     }
     
     

@@ -10,10 +10,14 @@ import Foundation
 class LZSS {
     
     let convert = Convert()
+    let compDegree = CompressDegree()
     
-    func compress(text: String) -> String{
+    func compress(text: String, compressDegree: CompressDegree.compressDegree) -> String{
         
         let txt = convert.toCharacter(text: text)
+        
+        let bufSize = compDegree.getCompressDegree(compressDegree: compressDegree).0
+        let dictSize = compDegree.getCompressDegree(compressDegree: compressDegree).1
         
         var table: [(Bool,Int?,Int?,String?)] = []
         var dictionary = ""
@@ -23,7 +27,7 @@ class LZSS {
         
         while index < txt.count {
             
-            if dictionary.contains(match + "\(txt[index])") && match.count < 7 {
+            if dictionary.contains(match + "\(txt[index])") && match.count < bufSize {
                 match.append(txt[index])
                 
             } else {
@@ -41,7 +45,7 @@ class LZSS {
         
         func addToTable(matchlength: String){
             
-            var matchh = matchlength
+            let matchh = matchlength
             
             if matchh.count == 0 {
                 table.append((false, nil, nil, "\(txt[index])"))
@@ -50,7 +54,7 @@ class LZSS {
             }
             if matchh.count == 1 {
                 table.append((false, nil, nil, matchh))
-                dictionary.append("\(matchh)")
+                dictionary.append(matchh)
 //                matchh = ""
                 index -= 1
             }
@@ -63,6 +67,9 @@ class LZSS {
                 dictionary.append(matchh)
 //                matchh = ""
                 index -= 1
+            }
+            while dictionary.count > dictSize {
+                dictionary.removeFirst()
             }
         }
         
