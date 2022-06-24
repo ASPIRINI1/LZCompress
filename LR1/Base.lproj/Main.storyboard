@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -708,6 +709,14 @@
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="544" height="419"/>
                         <subviews>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v8U-r7-hCd">
+                                <rect key="frame" x="6" y="364" width="532" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="sYv-fY-lOy">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ghi-zf-Hzg">
                                 <rect key="frame" x="8" y="394" width="528" height="20"/>
                                 <subviews>
@@ -805,15 +814,15 @@
                                 </customSpacing>
                             </stackView>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" allowsMagnification="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8dF-Ln-shI">
-                                <rect key="frame" x="0.0" y="0.0" width="544" height="380"/>
+                                <rect key="frame" x="0.0" y="0.0" width="544" height="356"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVA-TP-pj3">
-                                    <rect key="frame" x="0.0" y="0.0" width="544" height="380"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="544" height="356"/>
                                     <subviews>
                                         <view ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ruF-eT-26N" userLabel="View1">
-                                            <rect key="frame" x="0.0" y="0.0" width="51" height="380"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="89" height="361"/>
                                             <subviews>
                                                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bc0-LY-x4y">
-                                                    <rect key="frame" x="6" y="0.0" width="37" height="16"/>
+                                                    <rect key="frame" x="26" y="20" width="37" height="16"/>
                                                     <textFieldCell key="cell" title="Label" id="xYN-sZ-OKf">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -822,17 +831,19 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="bc0-LY-x4y" firstAttribute="leading" secondItem="ruF-eT-26N" secondAttribute="leading" constant="8" id="hVo-gq-sOi"/>
-                                                <constraint firstAttribute="bottom" secondItem="bc0-LY-x4y" secondAttribute="bottom" id="iPe-Ut-e6Y"/>
-                                                <constraint firstAttribute="trailing" secondItem="bc0-LY-x4y" secondAttribute="trailing" constant="10" id="lZa-2f-aZ4"/>
-                                                <constraint firstItem="bc0-LY-x4y" firstAttribute="top" secondItem="ruF-eT-26N" secondAttribute="top" id="tFc-V5-PIM"/>
+                                                <constraint firstItem="bc0-LY-x4y" firstAttribute="top" secondItem="mDt-Jw-BHp" secondAttribute="top" id="36Y-Nr-zeA"/>
+                                                <constraint firstItem="mDt-Jw-BHp" firstAttribute="bottom" secondItem="bc0-LY-x4y" secondAttribute="bottom" id="GPh-Rw-1vb"/>
+                                                <constraint firstItem="bc0-LY-x4y" firstAttribute="leading" secondItem="mDt-Jw-BHp" secondAttribute="leading" constant="8" id="Mk4-lb-sRl"/>
+                                                <constraint firstItem="mDt-Jw-BHp" firstAttribute="trailing" secondItem="bc0-LY-x4y" secondAttribute="trailing" constant="8" id="Y7k-Fp-Qu8"/>
                                             </constraints>
+                                            <viewLayoutGuide key="safeArea" id="axY-2T-gBx"/>
+                                            <viewLayoutGuide key="layoutMargins" id="mDt-Jw-BHp"/>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="ruF-eT-26N" firstAttribute="top" secondItem="YVA-TP-pj3" secondAttribute="top" id="6Wn-rW-qtk"/>
-                                        <constraint firstAttribute="trailing" secondItem="ruF-eT-26N" secondAttribute="trailing" id="amR-mJ-4le"/>
-                                        <constraint firstItem="ruF-eT-26N" firstAttribute="leading" secondItem="YVA-TP-pj3" secondAttribute="leading" id="mue-3g-orf"/>
+                                        <constraint firstAttribute="trailing" secondItem="ruF-eT-26N" secondAttribute="trailing" id="CJk-UW-ZJh"/>
+                                        <constraint firstItem="ruF-eT-26N" firstAttribute="leading" secondItem="YVA-TP-pj3" secondAttribute="leading" id="Ka2-Io-WhN"/>
+                                        <constraint firstItem="ruF-eT-26N" firstAttribute="top" secondItem="YVA-TP-pj3" secondAttribute="top" id="gTf-Iy-DTU"/>
                                     </constraints>
                                     <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                 </clipView>
@@ -841,25 +852,29 @@
                                     <rect key="frame" x="-100" y="-100" width="529" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="3ZH-69-BXC">
-                                    <rect key="frame" x="529" y="0.0" width="15" height="380"/>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="3ZH-69-BXC">
+                                    <rect key="frame" x="528" y="0.0" width="16" height="356"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="v8U-r7-hCd" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="0A1-pI-JbR"/>
                             <constraint firstItem="Ghi-zf-Hzg" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="5" id="2Pr-VD-Rbj"/>
-                            <constraint firstItem="8dF-Ln-shI" firstAttribute="top" secondItem="Ghi-zf-Hzg" secondAttribute="bottom" constant="14" id="8PS-A5-PYI"/>
                             <constraint firstItem="8dF-Ln-shI" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="EBR-vI-VQV"/>
                             <constraint firstAttribute="trailing" secondItem="Ghi-zf-Hzg" secondAttribute="trailing" constant="8" id="EGK-oX-oUh"/>
+                            <constraint firstItem="8dF-Ln-shI" firstAttribute="top" secondItem="v8U-r7-hCd" secondAttribute="bottom" constant="8" id="FkR-Lh-Ypf"/>
+                            <constraint firstItem="v8U-r7-hCd" firstAttribute="top" secondItem="Ghi-zf-Hzg" secondAttribute="bottom" constant="14" id="M3c-Jq-hhM"/>
                             <constraint firstAttribute="bottom" secondItem="8dF-Ln-shI" secondAttribute="bottom" id="buw-26-FSu"/>
+                            <constraint firstAttribute="trailing" secondItem="v8U-r7-hCd" secondAttribute="trailing" constant="8" id="cz3-7b-N9h"/>
                             <constraint firstItem="Ghi-zf-Hzg" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="df9-rD-RtX"/>
                             <constraint firstAttribute="height" constant="419" id="dq2-Vo-85X"/>
                             <constraint firstAttribute="trailing" secondItem="8dF-Ln-shI" secondAttribute="trailing" id="imc-oa-dwH"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="compressDegreeMenu" destination="6Or-GS-Nmk" id="IHF-Wi-0AJ"/>
+                        <outlet property="coefLabel" destination="v8U-r7-hCd" id="wFe-ag-lzg"/>
+                        <outlet property="compressDegreeMenu" destination="9Ng-nb-JdC" id="6eG-S3-5Qa"/>
                         <outlet property="compressMenu" destination="6Or-GS-Nmk" id="ba2-tF-Phc"/>
                         <outlet property="schrollView" destination="8dF-Ln-shI" id="Wox-wq-Cls"/>
                         <outlet property="textLabel" destination="bc0-LY-x4y" id="oLx-x7-b4a"/>

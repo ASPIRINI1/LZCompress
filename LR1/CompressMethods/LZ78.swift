@@ -12,13 +12,14 @@ class LZ78{
     private let convert = Convert()
     
     
-    func compress(txt: String) -> String{
+    func compress(txt: String) -> (String, Double){
         
         let text = convert.toCharacter(text: txt)
         
         var dictionary: [String : Int] = ["":0]
         var bufer = ""
         var answer: [(Int, Character)] = []
+        var encodingCount = 0
         
         for i in 0...text.count-1{
             if dictionary.keys.contains(bufer + "\(text[i])"){
@@ -27,26 +28,32 @@ class LZ78{
                 answer.append((dictionary[bufer]!, text[i]))
                 dictionary[bufer + "\(text[i])"] = dictionary.count
                 bufer = ""
+                encodingCount += 1
             }
         }
         if !bufer.isEmpty {
             let lastCh = bufer.last
             bufer.removeLast()
             answer.append((dictionary[bufer]!, lastCh!))
+            encodingCount += 1
         }
         
-        return convert.toString(dictionary: answer)
+        let encodedSize = Double(encodingCount * 13)
+        let notEncodedSize = Double(text.count * 8)
+        let coefficient = (notEncodedSize - encodedSize) / notEncodedSize * 100
+        
+        return (convert.toString(dictionary: answer),coefficient)
     }
     
     func decompress(txt: String) -> String{
         
         var dictionary: [String] = [""]
         var answer = ""
-        let text = convert.toDictionary(text: txt)
+        let table = convert.toDictionary(text: txt)
         
-        for ch in text {
+        for ch in table {
             let word = dictionary[ch.0] + "\(ch.1)"
-            answer += "\(word)"
+            answer += word
             dictionary.append(word)
         }
         

@@ -25,14 +25,14 @@ class CompressDegree {
             dictSize = 31
             
         case .mid:
-            bufSize = 28
-            dictSize = 124
-            
-        case .perfomance:
             bufSize = 56
             dictSize = 248
+            
+        case .perfomance:
+            bufSize = 90
+            dictSize = 400
         }
-        return (0,0)
+        return (bufSize ,dictSize)
     }
 
 }

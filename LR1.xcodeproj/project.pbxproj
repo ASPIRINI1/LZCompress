@@ -62,16 +62,24 @@
 		DEABB9A227DEB56F00C8A053 /* LR1 */ = {
 			isa = PBXGroup;
 			children = (
+				DEBD49762865FEEB006766CD /* Additional */,
 				DEE68ACE27ECF5ED00BA6A55 /* CompressMethods */,
 				DEABB9A327DEB56F00C8A053 /* AppDelegate.swift */,
 				DEABB9A527DEB56F00C8A053 /* ViewController.swift */,
-				DE8397DC27EDF2550064E2DF /* Convert.swift */,
-				DE94F76E27FDCF0B009A1BD0 /* CompressDegree.swift */,
 				DEABB9A727DEB57000C8A053 /* Assets.xcassets */,
 				DEABB9A927DEB57000C8A053 /* Main.storyboard */,
 				DEABB9AC27DEB57000C8A053 /* LR1.entitlements */,
 			);
 			path = LR1;
+			sourceTree = "<group>";
+		};
+		DEBD49762865FEEB006766CD /* Additional */ = {
+			isa = PBXGroup;
+			children = (
+				DE8397DC27EDF2550064E2DF /* Convert.swift */,
+				DE94F76E27FDCF0B009A1BD0 /* CompressDegree.swift */,
+			);
+			path = Additional;
 			sourceTree = "<group>";
 		};
 		DEE68ACE27ECF5ED00BA6A55 /* CompressMethods */ = {

@@ -14,12 +14,12 @@ class LZ77{
 
  
     
-    func compress(text: String, compressDegree: CompressDegree.compressDegree) -> String{
+    func compress(text: String, compressDegree: CompressDegree.compressDegree) -> (String,Double){
         
         var txt = convert.toCharacter(text: text)
         
         
-//        MARK: - fd
+//        MARK: - Properties
         
         let bufSize = compDegree.getCompressDegree(compressDegree: compressDegree).0
         let dictSize = compDegree.getCompressDegree(compressDegree: compressDegree).1
@@ -36,6 +36,7 @@ class LZ77{
         var answer = ""
         var of = 0
         var ma = 0
+        var encodingCount = 0
         
         var answr: [(_offset:Int, _matchlength:Int, String)] = []
         answr.append(( 0,  0, "\(txt[0])"))
@@ -78,6 +79,7 @@ class LZ77{
                     
                     answr.append(( 0,  0, "\(txt[startBuf])"))
                     move(matchlength: matchlength)
+                    encodingCount += 1
                     
                     break
                 }
@@ -94,6 +96,7 @@ class LZ77{
                     
                     matchlength = 0
                     ma = 0
+                    encodingCount += 1
 
                     break
                 }
@@ -125,10 +128,15 @@ class LZ77{
                 startBuf -= 1
                 endBuf -= 1
                 dictEnd -= 1
-                index -= 1
+                index = 1
             }
         }
-        return answer
+        
+        let encodedSize = Double(encodingCount * (5+3+8))
+        let notEncodedSize = Double(text.count * 8)
+        let coefficient:Double = Double((notEncodedSize - encodedSize) / notEncodedSize * 100)
+        
+        return (answer, coefficient)
     }
     
     

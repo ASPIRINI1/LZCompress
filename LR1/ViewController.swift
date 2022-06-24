@@ -15,19 +15,15 @@ class ViewController: NSViewController {
     @IBOutlet weak var schrollView: NSScrollView!
     @IBOutlet weak var compressDegreeMenu: NSPopUpButton!
     @IBOutlet weak var textLabel: NSTextField!
+    @IBOutlet weak var coefLabel: NSTextField!
+    
     
     let lz77 = LZ77()
     let lz78 = LZ78()
     let lzss = LZSS()
     
     let compressDegree = CompressDegree()
-    
-    let fm = FileManager.default
     var fileData = ""
-    let path = "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/original.txt"
-    var text: [Character] = [" "]
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,39 +31,70 @@ class ViewController: NSViewController {
     
     @IBAction func readFromFileAction(_ sender: Any) {
        
+        let path = "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/original.txt"
         
-        fileData = try! String(contentsOfFile: path)
-        textLabel.isHidden = false
-        textLabel.stringValue = fileData
+        if let data = try? String(contentsOfFile: path) {
+            fileData = data
+            textLabel.isHidden = false
+            textLabel.stringValue = fileData
+            coefLabel.isHidden = true
+        }
+
     }
     
     @IBAction func compressAction(_ sender: Any) {
         
-        var compressedText = ""
+        coefLabel.isHidden = false
+        coefLabel.stringValue = "Coef = "
         
-        if !fileData.isEmpty{
+        var degree = CompressDegree.compressDegree.speed
+        
+        switch compressDegreeMenu.selectedItem?.title {
             
-            switch compressMenu.selectedItem?.title {
-                
-            case "LZ77":
-                compressedText = lz77.compress(text: fileData, compressDegree: .speed)
-                textLabel.stringValue = compressedText
-                try! compressedText.write(toFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lz77Comressed.txt", atomically: false, encoding: .utf8)
-                
-            case "PrimLZSS":
-                compressedText = lzss.compress(text: fileData, compressDegree: .speed)
-                textLabel.stringValue = compressedText
-                try! compressedText.write(toFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lzssComressed.txt", atomically: false, encoding: .utf8)
-                
-            case "PrimLZ78":
-                compressedText = lz78.compress(txt: fileData)
-                textLabel.stringValue = compressedText
-                try! compressedText.write(toFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lz78Comressed.txt", atomically: false, encoding: .utf8)
-                
-            default:
-                break
-       
-            }
+        case "Speed":
+            print("speed")
+            degree = CompressDegree.compressDegree.speed
+            
+        case "Middle":
+            print("mid")
+            degree = CompressDegree.compressDegree.mid
+            
+        case "Perfomance":
+            print("pref")
+            degree = CompressDegree.compressDegree.perfomance
+            
+        default:
+            break
+   
+        }
+        
+        var compressedText: (String,Double)
+        
+        guard !fileData.isEmpty else { return }
+            
+        switch compressMenu.selectedItem?.title {
+            
+        case "LZ77":
+            compressedText = lz77.compress(text: fileData, compressDegree: degree)
+            textLabel.stringValue = compressedText.0
+            coefLabel.stringValue += String(compressedText.1.rounded())
+            try! compressedText.0.write(toFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lz77Comressed.txt",atomically: false, encoding: .utf8)
+            
+        case "PrimLZSS":
+            compressedText = lzss.compress(text: fileData, compressDegree: degree)
+            textLabel.stringValue = compressedText.0
+            coefLabel.stringValue += String(compressedText.1.rounded())
+            try! compressedText.0.write(toFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lzssComressed.txt",atomically: false, encoding: .utf8)
+            
+        case "PrimLZ78":
+            compressedText = lz78.compress(txt: fileData)
+            textLabel.stringValue = compressedText.0
+            coefLabel.stringValue += String(compressedText.1.rounded())
+            try! compressedText.0.write(toFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lz78Comressed.txt",atomically: false, encoding: .utf8)
+            
+        default:
+            break
+    
         }
     }
         

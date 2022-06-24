@@ -12,7 +12,7 @@ class LZSS {
     let convert = Convert()
     let compDegree = CompressDegree()
     
-    func compress(text: String, compressDegree: CompressDegree.compressDegree) -> String{
+    func compress(text: String, compressDegree: CompressDegree.compressDegree) -> (String,Double){
         
         let txt = convert.toCharacter(text: text)
         
@@ -24,6 +24,8 @@ class LZSS {
         var answer = ""
         var match = ""
         var index = 0
+        var encodingCount = 0
+        var notEncodingCount = 0
         
         while index < txt.count {
             
@@ -50,12 +52,12 @@ class LZSS {
             if matchh.count == 0 {
                 table.append((false, nil, nil, "\(txt[index])"))
                 dictionary.append("\(txt[index])")
-//                matchh = ""
+                notEncodingCount += 1
             }
             if matchh.count == 1 {
                 table.append((false, nil, nil, matchh))
                 dictionary.append(matchh)
-//                matchh = ""
+                notEncodingCount += 1
                 index -= 1
             }
             if matchh.count > 1 {
@@ -65,7 +67,7 @@ class LZSS {
 
                 table.append((true, offset , matchh.count, nil))
                 dictionary.append(matchh)
-//                matchh = ""
+                encodingCount += 1
                 index -= 1
             }
             while dictionary.count > dictSize {
@@ -93,8 +95,11 @@ class LZSS {
             answer.append(item.3 ?? "")
         }
         
-//        print(answer)
-        return answer
+        let encodedSize = Double(notEncodingCount * (1+8) + encodingCount * (1+5+3))
+        let notEncodedSize = Double(text.count * 8)
+        let coefficient = Double((notEncodedSize - encodedSize) / notEncodedSize * 100)
+        
+        return (answer,coefficient)
     }
     
     func decompress(text: String) -> String{
@@ -123,12 +128,10 @@ class LZSS {
                     buf.append("\(txt[index])")
                     index += 1
                 }
-//                if txt[index] == " " { //??
                     offset = Int(buf)!
                     index += 1
                     buf = ""
-//                }
-                while txt[index].isNumber{ //??????
+                while txt[index].isNumber{
                     buf.append(txt[index])
                     index += 1
                 }
