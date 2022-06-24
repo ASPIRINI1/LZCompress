@@ -16,6 +16,10 @@
 		DEABB9A627DEB56F00C8A053 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEABB9A527DEB56F00C8A053 /* ViewController.swift */; };
 		DEABB9A827DEB57000C8A053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEABB9A727DEB57000C8A053 /* Assets.xcassets */; };
 		DEABB9AB27DEB57000C8A053 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEABB9A927DEB57000C8A053 /* Main.storyboard */; };
+		DEBD4979286605E9006766CD /* original.txt in Resources */ = {isa = PBXBuildFile; fileRef = DEBD4978286605E9006766CD /* original.txt */; };
+		DEBD497D286605F1006766CD /* lz77Compressed.txt in Resources */ = {isa = PBXBuildFile; fileRef = DEBD497A286605F1006766CD /* lz77Compressed.txt */; };
+		DEBD497E286605F1006766CD /* lz78Compressed.txt in Resources */ = {isa = PBXBuildFile; fileRef = DEBD497B286605F1006766CD /* lz78Compressed.txt */; };
+		DEBD497F286605F1006766CD /* lzssCompressed.txt in Resources */ = {isa = PBXBuildFile; fileRef = DEBD497C286605F1006766CD /* lzssCompressed.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		DEABB9A727DEB57000C8A053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEABB9AA27DEB57000C8A053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEABB9AC27DEB57000C8A053 /* LR1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LR1.entitlements; sourceTree = "<group>"; };
+		DEBD4978286605E9006766CD /* original.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = original.txt; path = Files/original.txt; sourceTree = SOURCE_ROOT; };
+		DEBD497A286605F1006766CD /* lz77Compressed.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lz77Compressed.txt; path = Files/lz77Compressed.txt; sourceTree = SOURCE_ROOT; };
+		DEBD497B286605F1006766CD /* lz78Compressed.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lz78Compressed.txt; path = Files/lz78Compressed.txt; sourceTree = SOURCE_ROOT; };
+		DEBD497C286605F1006766CD /* lzssCompressed.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lzssCompressed.txt; path = Files/lzssCompressed.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 		DEABB9A227DEB56F00C8A053 /* LR1 */ = {
 			isa = PBXGroup;
 			children = (
+				DEBD4977286605C0006766CD /* Resources */,
 				DEBD49762865FEEB006766CD /* Additional */,
 				DEE68ACE27ECF5ED00BA6A55 /* CompressMethods */,
 				DEABB9A327DEB56F00C8A053 /* AppDelegate.swift */,
@@ -80,6 +89,17 @@
 				DE94F76E27FDCF0B009A1BD0 /* CompressDegree.swift */,
 			);
 			path = Additional;
+			sourceTree = "<group>";
+		};
+		DEBD4977286605C0006766CD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DEBD4978286605E9006766CD /* original.txt */,
+				DEBD497A286605F1006766CD /* lz77Compressed.txt */,
+				DEBD497B286605F1006766CD /* lz78Compressed.txt */,
+				DEBD497C286605F1006766CD /* lzssCompressed.txt */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		DEE68ACE27ECF5ED00BA6A55 /* CompressMethods */ = {
@@ -120,7 +140,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					DEABB99F27DEB56F00C8A053 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -150,8 +170,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEBD497D286605F1006766CD /* lz77Compressed.txt in Resources */,
+				DEBD4979286605E9006766CD /* original.txt in Resources */,
 				DEABB9A827DEB57000C8A053 /* Assets.xcassets in Resources */,
 				DEABB9AB27DEB57000C8A053 /* Main.storyboard in Resources */,
+				DEBD497F286605F1006766CD /* lzssCompressed.txt in Resources */,
+				DEBD497E286605F1006766CD /* lz78Compressed.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LR1/LR1.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -332,6 +357,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LR1/LR1.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

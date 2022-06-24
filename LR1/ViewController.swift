@@ -17,10 +17,19 @@ class ViewController: NSViewController {
     @IBOutlet weak var textLabel: NSTextField!
     @IBOutlet weak var coefLabel: NSTextField!
     
-    
+//    compress methods objects
     let lz77 = LZ77()
     let lz78 = LZ78()
     let lzss = LZSS()
+    
+    
+//    files properties
+    let original = Bundle.main.path(forResource: "original", ofType: "txt")!
+    
+    let lz77Compressed = Bundle.main.path(forResource: "lz77Compressed", ofType: "txt")!
+    let lz78Compressed = Bundle.main.path(forResource: "lz78Compressed", ofType: "txt")!
+    let lzssCompressed = Bundle.main.path(forResource: "lzssCompressed", ofType: "txt")!
+    
     
     let compressDegree = CompressDegree()
     var fileData = ""
@@ -31,7 +40,7 @@ class ViewController: NSViewController {
     
     @IBAction func readFromFileAction(_ sender: Any) {
        
-        let path = "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/original.txt"
+        let path = original
         
         if let data = try? String(contentsOfFile: path) {
             fileData = data
@@ -52,15 +61,12 @@ class ViewController: NSViewController {
         switch compressDegreeMenu.selectedItem?.title {
             
         case "Speed":
-            print("speed")
             degree = CompressDegree.compressDegree.speed
             
         case "Middle":
-            print("mid")
             degree = CompressDegree.compressDegree.mid
             
         case "Perfomance":
-            print("pref")
             degree = CompressDegree.compressDegree.perfomance
             
         default:
@@ -78,19 +84,19 @@ class ViewController: NSViewController {
             compressedText = lz77.compress(text: fileData, compressDegree: degree)
             textLabel.stringValue = compressedText.0
             coefLabel.stringValue += String(compressedText.1.rounded())
-            try! compressedText.0.write(toFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lz77Comressed.txt",atomically: false, encoding: .utf8)
+            try! compressedText.0.write(toFile: lz77Compressed, atomically: false, encoding: .utf8)
             
         case "PrimLZSS":
             compressedText = lzss.compress(text: fileData, compressDegree: degree)
             textLabel.stringValue = compressedText.0
             coefLabel.stringValue += String(compressedText.1.rounded())
-            try! compressedText.0.write(toFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lzssComressed.txt",atomically: false, encoding: .utf8)
+            try! compressedText.0.write(toFile:lzssCompressed, atomically: false, encoding: .utf8)
             
         case "PrimLZ78":
             compressedText = lz78.compress(txt: fileData)
             textLabel.stringValue = compressedText.0
             coefLabel.stringValue += String(compressedText.1.rounded())
-            try! compressedText.0.write(toFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lz78Comressed.txt",atomically: false, encoding: .utf8)
+            try! compressedText.0.write(toFile: lz78Compressed, atomically: false, encoding: .utf8)
             
         default:
             break
@@ -103,13 +109,13 @@ class ViewController: NSViewController {
         
         switch compressMenu.selectedItem?.title {
         case "LZ77":
-            textLabel.stringValue = lz77.decompress(text: try! String(contentsOfFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lz77Comressed.txt"))
+            textLabel.stringValue = lz77.decompress(text: try! String(contentsOfFile:lz77Compressed))
             
         case "PrimLZSS":
-            textLabel.stringValue = lzss.decompress(text: try! String(contentsOfFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lzssComressed.txt"))
+            textLabel.stringValue = lzss.decompress(text: try! String(contentsOfFile:lzssCompressed))
             
         case "PrimLZ78":
-            textLabel.stringValue = lz78.decompress(txt: try! String(contentsOfFile: "/Users/stanislavzverkov/Desktop/MSKIT/LR1/Files/lz78Comressed.txt"))
+            textLabel.stringValue = lz78.decompress(txt: try! String(contentsOfFile:lz78Compressed))
             
         default:
             break
