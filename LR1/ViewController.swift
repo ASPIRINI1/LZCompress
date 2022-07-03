@@ -34,6 +34,8 @@ class ViewController: NSViewController {
     let compressDegree = CompressDegree()
     var fileData = ""
     
+    let queue = DispatchQueue.global(qos: .userInitiated)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -42,12 +44,18 @@ class ViewController: NSViewController {
        
         let path = original
         
-        if let data = try? String(contentsOfFile: path) {
-            fileData = data
-            textLabel.isHidden = false
-            textLabel.stringValue = fileData
-            coefLabel.isHidden = true
+        let workItem = DispatchWorkItem {
+            guard let data = try? String(contentsOfFile: path) else { return }
+            self.fileData = data
         }
+        
+        workItem.notify(queue: .main) {
+            self.textLabel.isHidden = false
+            self.textLabel.stringValue = self.fileData
+            self.coefLabel.isHidden = true
+        }
+        
+        queue.async(execute: workItem)
 
     }
     
@@ -71,55 +79,81 @@ class ViewController: NSViewController {
             
         default:
             break
-   
         }
         
-        var compressedText: (String,Double)
+        var compressedText = ("",0.0)
+        var workItem = DispatchWorkItem {}
         
         guard !fileData.isEmpty else { return }
-            
+        
         switch compressMenu.selectedItem?.title {
             
         case "LZ77":
-            compressedText = lz77.compress(text: fileData, compressDegree: degree)
-            textLabel.stringValue = compressedText.0
-            coefLabel.stringValue += String(compressedText.1.rounded())
-            try! compressedText.0.write(toFile: lz77Compressed, atomically: false, encoding: .utf8)
+            workItem = DispatchWorkItem {
+                compressedText = self.lz77.compress(text: self.fileData, compressDegree: degree)
+                try? compressedText.0.write(toFile: self.lz77Compressed, atomically: false, encoding: .utf8)
+            }
             
         case "PrimLZSS":
-            compressedText = lzss.compress(text: fileData, compressDegree: degree)
-            textLabel.stringValue = compressedText.0
-            coefLabel.stringValue += String(compressedText.1.rounded())
-            try! compressedText.0.write(toFile:lzssCompressed, atomically: false, encoding: .utf8)
+            workItem = DispatchWorkItem {
+                compressedText = self.lzss.compress(text: self.fileData, compressDegree: degree)
+                try? compressedText.0.write(toFile:self.lzssCompressed, atomically: false, encoding: .utf8)
+            }
+            
             
         case "PrimLZ78":
-            compressedText = lz78.compress(txt: fileData)
-            textLabel.stringValue = compressedText.0
-            coefLabel.stringValue += String(compressedText.1.rounded())
-            try! compressedText.0.write(toFile: lz78Compressed, atomically: false, encoding: .utf8)
+            workItem = DispatchWorkItem {
+                compressedText = self.lz78.compress(txt: self.fileData)
+                
+                try? compressedText.0.write(toFile: self.lz78Compressed, atomically: false, encoding: .utf8)
+            }
+            
             
         default:
             break
-    
         }
-    }
         
+        workItem.notify(queue: .main) {
+            self.textLabel.stringValue = compressedText.0
+            self.coefLabel.stringValue += String(compressedText.1.rounded())
+        }
+        
+        queue.async(execute: workItem)
+    }
+    
+    
     
     @IBAction func decompressAction(_ sender: Any) {
         
-        switch compressMenu.selectedItem?.title {
-        case "LZ77":
-            textLabel.stringValue = lz77.decompress(text: try! String(contentsOfFile:lz77Compressed))
+        var decompressedText = String()
+        
+        var workItem = DispatchWorkItem {}
+        
+            switch self.compressMenu.selectedItem?.title {
+            case "LZ77":
+                workItem = DispatchWorkItem {
+                    decompressedText = self.lz77.decompress(text: try! String(contentsOfFile:self.lz77Compressed))
+                }
+                
+            case "PrimLZSS":
+                workItem = DispatchWorkItem {
+                    decompressedText = self.lzss.decompress(text: try! String(contentsOfFile:self.lzssCompressed))
+                }
+                
+            case "PrimLZ78":
+                workItem = DispatchWorkItem {
+                    decompressedText = self.lz78.decompress(txt: try! String(contentsOfFile:self.lz78Compressed))
+                }
             
-        case "PrimLZSS":
-            textLabel.stringValue = lzss.decompress(text: try! String(contentsOfFile:lzssCompressed))
-            
-        case "PrimLZ78":
-            textLabel.stringValue = lz78.decompress(txt: try! String(contentsOfFile:lz78Compressed))
-            
-        default:
-            break
+            default:
+                break
+            }
+        
+        workItem.notify(queue: .main) {
+            self.textLabel.stringValue = decompressedText
         }
+        
+        queue.async(execute: workItem)
     }
 
 
