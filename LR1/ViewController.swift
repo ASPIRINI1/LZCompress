@@ -5,8 +5,6 @@
 //  Created by Станислав Зверьков on 14.03.2022.
 //
 
-
-
 import Cocoa
 
 class ViewController: NSViewController {
@@ -17,145 +15,146 @@ class ViewController: NSViewController {
     @IBOutlet weak var textLabel: NSTextField!
     @IBOutlet weak var coefLabel: NSTextField!
     
-//    compress methods objects
-    let lz77 = LZ77()
-    let lz78 = LZ78()
-    let lzss = LZSS()
+    lazy var lz77 = LZ77()
+    lazy var lz78 = LZ78()
+    lazy var lzss = LZSS()
+    var compressDegree = CompressDegreee.Speed
+    var compressMethod = CompressMethod.LZ77
     
-    
-//    files properties
-    let original = Bundle.main.path(forResource: "original", ofType: "txt")!
-    
-    let lz77Compressed = Bundle.main.path(forResource: "lz77Compressed", ofType: "txt")!
-    let lz78Compressed = Bundle.main.path(forResource: "lz78Compressed", ofType: "txt")!
-    let lzssCompressed = Bundle.main.path(forResource: "lzssCompressed", ofType: "txt")!
-    
-    
-    let compressDegree = CompressDegree()
-    var fileData = ""
+    enum CompressDegreee {
+        case Speed
+        case Mid
+        case Perfomance
+        
+        var value: (Int,Int) {
+            var bufSize: Int
+            var dictSize: Int
+            switch self {
+            case .Speed:
+                bufSize = 7
+                dictSize = 31
+            case .Mid:
+                bufSize = 56
+                dictSize = 248
+            case .Perfomance:
+                bufSize = 90
+                dictSize = 400
+            }
+            return (bufSize, dictSize)
+        }
+    }
+    enum CompressMethod {
+        case LZ77
+        case LZ78
+        case LZSS
+    }
+
+    lazy var original = Bundle.main.path(forResource: "original", ofType: "txt")
+    lazy var lz77Compressed = Bundle.main.path(forResource: "lz77Compressed", ofType: "txt")!
+    lazy var lz78Compressed = Bundle.main.path(forResource: "lz78Compressed", ofType: "txt")!
+    lazy var lzssCompressed = Bundle.main.path(forResource: "lzssCompressed", ofType: "txt")!
+    var fileData = String()
     
     let queue = DispatchQueue.global(qos: .userInitiated)
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func compressMethodAction(_ sender: Any) {
+        guard let sender = sender as? NSPopUpButton else { return }
+        switch sender.indexOfSelectedItem {
+        case 0:
+            compressMethod = .LZ77
+        case 1:
+            compressMethod = .LZ78
+        case 2:
+            compressMethod = .LZSS
+        default:
+            break
+        }
+    }
+    
+    @IBAction func compressDegreeAction(_ sender: Any) {
+        guard let sender = sender as? NSPopUpButton else { return }
+        switch sender.indexOfSelectedItem {
+        case 0:
+            compressDegree = .Speed
+        case 1:
+            compressDegree = .Mid
+        case 2:
+            compressDegree = .Perfomance
+        default:
+            break
+        }
     }
     
     @IBAction func readFromFileAction(_ sender: Any) {
-       
-        let path = original
-        
         let workItem = DispatchWorkItem {
-            guard let data = try? String(contentsOfFile: path) else { return }
+            guard let original = self.original else { return }
+            guard let data = try? String(contentsOfFile: original) else { return }
             self.fileData = data
         }
-        
         workItem.notify(queue: .main) {
             self.textLabel.isHidden = false
             self.textLabel.stringValue = self.fileData
             self.coefLabel.isHidden = true
         }
-        
         queue.async(execute: workItem)
-
     }
     
     @IBAction func compressAction(_ sender: Any) {
-        
         coefLabel.isHidden = false
         coefLabel.stringValue = "Coef = "
-        
-        var degree = CompressDegree.compressDegree.speed
-        
-        switch compressDegreeMenu.selectedItem?.title {
-            
-        case "Speed":
-            degree = CompressDegree.compressDegree.speed
-            
-        case "Middle":
-            degree = CompressDegree.compressDegree.mid
-            
-        case "Perfomance":
-            degree = CompressDegree.compressDegree.perfomance
-            
-        default:
-            break
-        }
-        
-        var compressedText = ("",0.0)
-        var workItem = DispatchWorkItem {}
-        
+
+        var compressedText: (String, Double)!
+        var workItem: DispatchWorkItem
         guard !fileData.isEmpty else { return }
         
-        switch compressMenu.selectedItem?.title {
-            
-        case "LZ77":
+        switch compressMethod {
+        case .LZ77:
             workItem = DispatchWorkItem {
-                compressedText = self.lz77.compress(text: self.fileData, compressDegree: degree)
+                compressedText = self.lz77.compress(text: self.fileData, compressDegree: self.compressDegree.value)
                 try? compressedText.0.write(toFile: self.lz77Compressed, atomically: false, encoding: .utf8)
             }
-            
-        case "PrimLZSS":
+        case .LZSS:
             workItem = DispatchWorkItem {
-                compressedText = self.lzss.compress(text: self.fileData, compressDegree: degree)
+                compressedText = self.lzss.compress(text: self.fileData, compressDegree: self.compressDegree.value)
                 try? compressedText.0.write(toFile:self.lzssCompressed, atomically: false, encoding: .utf8)
             }
-            
-            
-        case "PrimLZ78":
+        case .LZ78:
             workItem = DispatchWorkItem {
                 compressedText = self.lz78.compress(txt: self.fileData)
-                
                 try? compressedText.0.write(toFile: self.lz78Compressed, atomically: false, encoding: .utf8)
             }
-            
-            
-        default:
-            break
         }
-        
         workItem.notify(queue: .main) {
             self.textLabel.stringValue = compressedText.0
             self.coefLabel.stringValue += String(compressedText.1.rounded())
         }
-        
         queue.async(execute: workItem)
     }
     
-    
-    
     @IBAction func decompressAction(_ sender: Any) {
-        
         var decompressedText = String()
-        
-        var workItem = DispatchWorkItem {}
-        
-            switch self.compressMenu.selectedItem?.title {
-            case "LZ77":
-                workItem = DispatchWorkItem {
-                    decompressedText = self.lz77.decompress(text: try! String(contentsOfFile:self.lz77Compressed))
-                }
-                
-            case "PrimLZSS":
-                workItem = DispatchWorkItem {
-                    decompressedText = self.lzss.decompress(text: try! String(contentsOfFile:self.lzssCompressed))
-                }
-                
-            case "PrimLZ78":
-                workItem = DispatchWorkItem {
-                    decompressedText = self.lz78.decompress(txt: try! String(contentsOfFile:self.lz78Compressed))
-                }
-            
-            default:
-                break
+        var workItem: DispatchWorkItem
+        switch compressMethod {
+        case .LZ77:
+            workItem = DispatchWorkItem {
+                guard let fileData = try? String(contentsOfFile:self.lz77Compressed) else { return }
+                decompressedText = self.lz77.decompress(text: fileData)
             }
-        
+        case .LZSS:
+            workItem = DispatchWorkItem {
+                guard let fileData = try? String(contentsOfFile:self.lz77Compressed) else { return }
+                decompressedText = self.lzss.decompress(text: fileData)
+            }
+        case .LZ78:
+            workItem = DispatchWorkItem {
+                guard let fileData = try? String(contentsOfFile:self.lz77Compressed) else { return }
+                decompressedText = self.lz78.decompress(txt: fileData)
+            }
+        }
         workItem.notify(queue: .main) {
             self.textLabel.stringValue = decompressedText
         }
-        
         queue.async(execute: workItem)
     }
-
-
 }
 

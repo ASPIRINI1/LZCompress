@@ -8,36 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		DE08D53C27F0D1CC00F1E012 /* LZ77.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE08D53B27F0D1CC00F1E012 /* LZ77.swift */; };
+		DE2C1A0D28F97A1200202F48 /* text sample.txt in Resources */ = {isa = PBXBuildFile; fileRef = DE2C1A0628F97A1200202F48 /* text sample.txt */; };
+		DE2C1A0E28F97A1200202F48 /* text sample2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DE2C1A0728F97A1200202F48 /* text sample2.txt */; };
+		DE2C1A0F28F97A1200202F48 /* original.txt in Resources */ = {isa = PBXBuildFile; fileRef = DE2C1A0828F97A1200202F48 /* original.txt */; };
+		DE2C1A1028F97A1200202F48 /* lz77Compressed.txt in Resources */ = {isa = PBXBuildFile; fileRef = DE2C1A0928F97A1200202F48 /* lz77Compressed.txt */; };
+		DE2C1A1128F97A1200202F48 /* lzssCompressed.txt in Resources */ = {isa = PBXBuildFile; fileRef = DE2C1A0A28F97A1200202F48 /* lzssCompressed.txt */; };
+		DE2C1A1228F97A1200202F48 /* lz78Compressed.txt in Resources */ = {isa = PBXBuildFile; fileRef = DE2C1A0B28F97A1200202F48 /* lz78Compressed.txt */; };
+		DE2C1A1328F97A1200202F48 /* 2e.txt in Resources */ = {isa = PBXBuildFile; fileRef = DE2C1A0C28F97A1200202F48 /* 2e.txt */; };
 		DE78F37727F7D637008569BF /* LZSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE78F37627F7D637008569BF /* LZSS.swift */; };
 		DE8397DB27EDF0E60064E2DF /* LZ78.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8397DA27EDF0E60064E2DF /* LZ78.swift */; };
 		DE8397DD27EDF2550064E2DF /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8397DC27EDF2550064E2DF /* Convert.swift */; };
-		DE94F76F27FDCF0B009A1BD0 /* CompressDegree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE94F76E27FDCF0B009A1BD0 /* CompressDegree.swift */; };
 		DEABB9A427DEB56F00C8A053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEABB9A327DEB56F00C8A053 /* AppDelegate.swift */; };
 		DEABB9A627DEB56F00C8A053 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEABB9A527DEB56F00C8A053 /* ViewController.swift */; };
 		DEABB9A827DEB57000C8A053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEABB9A727DEB57000C8A053 /* Assets.xcassets */; };
 		DEABB9AB27DEB57000C8A053 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEABB9A927DEB57000C8A053 /* Main.storyboard */; };
-		DEBD4979286605E9006766CD /* original.txt in Resources */ = {isa = PBXBuildFile; fileRef = DEBD4978286605E9006766CD /* original.txt */; };
-		DEBD497D286605F1006766CD /* lz77Compressed.txt in Resources */ = {isa = PBXBuildFile; fileRef = DEBD497A286605F1006766CD /* lz77Compressed.txt */; };
-		DEBD497E286605F1006766CD /* lz78Compressed.txt in Resources */ = {isa = PBXBuildFile; fileRef = DEBD497B286605F1006766CD /* lz78Compressed.txt */; };
-		DEBD497F286605F1006766CD /* lzssCompressed.txt in Resources */ = {isa = PBXBuildFile; fileRef = DEBD497C286605F1006766CD /* lzssCompressed.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DE08D53B27F0D1CC00F1E012 /* LZ77.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LZ77.swift; sourceTree = "<group>"; };
+		DE2C1A0628F97A1200202F48 /* text sample.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "text sample.txt"; sourceTree = "<group>"; };
+		DE2C1A0728F97A1200202F48 /* text sample2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "text sample2.txt"; sourceTree = "<group>"; };
+		DE2C1A0828F97A1200202F48 /* original.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = original.txt; sourceTree = "<group>"; };
+		DE2C1A0928F97A1200202F48 /* lz77Compressed.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lz77Compressed.txt; sourceTree = "<group>"; };
+		DE2C1A0A28F97A1200202F48 /* lzssCompressed.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lzssCompressed.txt; sourceTree = "<group>"; };
+		DE2C1A0B28F97A1200202F48 /* lz78Compressed.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lz78Compressed.txt; sourceTree = "<group>"; };
+		DE2C1A0C28F97A1200202F48 /* 2e.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2e.txt; sourceTree = "<group>"; };
 		DE78F37627F7D637008569BF /* LZSS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LZSS.swift; sourceTree = "<group>"; };
 		DE8397DA27EDF0E60064E2DF /* LZ78.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LZ78.swift; sourceTree = "<group>"; };
 		DE8397DC27EDF2550064E2DF /* Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
-		DE94F76E27FDCF0B009A1BD0 /* CompressDegree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressDegree.swift; sourceTree = "<group>"; };
 		DEABB9A027DEB56F00C8A053 /* LR1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LR1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEABB9A327DEB56F00C8A053 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEABB9A527DEB56F00C8A053 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DEABB9A727DEB57000C8A053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEABB9AA27DEB57000C8A053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEABB9AC27DEB57000C8A053 /* LR1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LR1.entitlements; sourceTree = "<group>"; };
-		DEBD4978286605E9006766CD /* original.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = original.txt; path = Files/original.txt; sourceTree = SOURCE_ROOT; };
-		DEBD497A286605F1006766CD /* lz77Compressed.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lz77Compressed.txt; path = Files/lz77Compressed.txt; sourceTree = SOURCE_ROOT; };
-		DEBD497B286605F1006766CD /* lz78Compressed.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lz78Compressed.txt; path = Files/lz78Compressed.txt; sourceTree = SOURCE_ROOT; };
-		DEBD497C286605F1006766CD /* lzssCompressed.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lzssCompressed.txt; path = Files/lzssCompressed.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE2C1A0528F97A1200202F48 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				DE2C1A0628F97A1200202F48 /* text sample.txt */,
+				DE2C1A0728F97A1200202F48 /* text sample2.txt */,
+				DE2C1A0828F97A1200202F48 /* original.txt */,
+				DE2C1A0928F97A1200202F48 /* lz77Compressed.txt */,
+				DE2C1A0A28F97A1200202F48 /* lzssCompressed.txt */,
+				DE2C1A0B28F97A1200202F48 /* lz78Compressed.txt */,
+				DE2C1A0C28F97A1200202F48 /* 2e.txt */,
+			);
+			path = Files;
+			sourceTree = SOURCE_ROOT;
+		};
 		DEABB99727DEB56F00C8A053 = {
 			isa = PBXGroup;
 			children = (
@@ -70,7 +88,7 @@
 		DEABB9A227DEB56F00C8A053 /* LR1 */ = {
 			isa = PBXGroup;
 			children = (
-				DEBD4977286605C0006766CD /* Resources */,
+				DE2C1A0528F97A1200202F48 /* Files */,
 				DEBD49762865FEEB006766CD /* Additional */,
 				DEE68ACE27ECF5ED00BA6A55 /* CompressMethods */,
 				DEABB9A327DEB56F00C8A053 /* AppDelegate.swift */,
@@ -86,20 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				DE8397DC27EDF2550064E2DF /* Convert.swift */,
-				DE94F76E27FDCF0B009A1BD0 /* CompressDegree.swift */,
 			);
 			path = Additional;
-			sourceTree = "<group>";
-		};
-		DEBD4977286605C0006766CD /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				DEBD4978286605E9006766CD /* original.txt */,
-				DEBD497A286605F1006766CD /* lz77Compressed.txt */,
-				DEBD497B286605F1006766CD /* lz78Compressed.txt */,
-				DEBD497C286605F1006766CD /* lzssCompressed.txt */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		DEE68ACE27ECF5ED00BA6A55 /* CompressMethods */ = {
@@ -170,12 +176,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEBD497D286605F1006766CD /* lz77Compressed.txt in Resources */,
-				DEBD4979286605E9006766CD /* original.txt in Resources */,
 				DEABB9A827DEB57000C8A053 /* Assets.xcassets in Resources */,
+				DE2C1A1128F97A1200202F48 /* lzssCompressed.txt in Resources */,
+				DE2C1A1228F97A1200202F48 /* lz78Compressed.txt in Resources */,
+				DE2C1A1328F97A1200202F48 /* 2e.txt in Resources */,
+				DE2C1A1028F97A1200202F48 /* lz77Compressed.txt in Resources */,
 				DEABB9AB27DEB57000C8A053 /* Main.storyboard in Resources */,
-				DEBD497F286605F1006766CD /* lzssCompressed.txt in Resources */,
-				DEBD497E286605F1006766CD /* lz78Compressed.txt in Resources */,
+				DE2C1A0F28F97A1200202F48 /* original.txt in Resources */,
+				DE2C1A0D28F97A1200202F48 /* text sample.txt in Resources */,
+				DE2C1A0E28F97A1200202F48 /* text sample2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +201,6 @@
 				DE78F37727F7D637008569BF /* LZSS.swift in Sources */,
 				DE8397DB27EDF0E60064E2DF /* LZ78.swift in Sources */,
 				DEABB9A427DEB56F00C8A053 /* AppDelegate.swift in Sources */,
-				DE94F76F27FDCF0B009A1BD0 /* CompressDegree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
